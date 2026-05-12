@@ -61,8 +61,13 @@
     .hero {
       display: flex; align-items: center;
       padding: 100px 6% 48px; max-width: 1100px; margin: 0 auto;
+      position: relative; overflow: hidden;
     }
-    .hero-inner { max-width: 720px; }
+    #particles-canvas {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .hero-inner { max-width: 720px; position: relative; z-index: 1; }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(108,142,255,0.1); color: var(--accent2);
@@ -75,13 +80,23 @@
     .hero h1 {
       font-family: 'Nunito', sans-serif; font-weight: 900;
       font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.05;
-      color: #fff; letter-spacing: -0.02em; margin-bottom: 6px;
+      color: #fff; letter-spacing: -0.02em; margin-bottom: 12px;
     }
     .hero h1 .highlight { color: var(--accent); }
     .swift-logo { width: 48px; height: 48px; opacity: 0.85; display: block; margin-bottom: 20px; }
-    .hero-role {
+
+    /* Typing role */
+    .hero-typed-wrap { margin-bottom: 10px; min-height: calc(clamp(1.7rem, 4vw, 2.8rem) * 1.2); }
+    .hero-typed {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1.2;
+      background: linear-gradient(120deg, #6C8EFF 0%, #a5b8ff 55%, #c5aeff 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-role-sub {
       font-family: 'Nunito', sans-serif; font-weight: 700;
-      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-size: clamp(0.85rem, 2vw, 1rem);
       color: var(--muted); margin-bottom: 28px; letter-spacing: -0.01em;
     }
     .hero-bio {
@@ -151,7 +166,11 @@
       display: flex; flex-direction: column; gap: 10px;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .app-card:hover { transform: translateY(-3px); border-color: rgba(108,142,255,0.3); }
+    .app-card:hover {
+      transform: translateY(-5px) scale(1.01);
+      border-color: rgba(108,142,255,0.45);
+      box-shadow: 0 10px 40px rgba(108,142,255,0.18), 0 2px 12px rgba(0,0,0,0.4);
+    }
     .app-header { display: flex; align-items: center; gap: 14px; }
     .app-icon { width: 52px; height: 52px; border-radius: 13px; object-fit: cover; flex-shrink: 0; }
     .app-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: #fff; line-height: 1.3; }
@@ -165,6 +184,17 @@
     .app-btn:hover { opacity: 0.8; transform: translateY(-1px); }
     .app-btn.store { background: rgba(255,255,255,0.09); color: rgba(226,228,239,0.8); }
     .app-btn.site  { background: rgba(108,142,255,0.12); color: var(--accent2); border: 1px solid rgba(108,142,255,0.2); }
+
+    /* ─── FADE-IN ON SCROLL ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ─── FOOTER ─── */
     footer { text-align: center; padding: 40px 6%; color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--border); }
@@ -198,10 +228,14 @@
 
 <!-- HERO -->
 <div class="hero">
+  <canvas id="particles-canvas"></canvas>
   <div class="hero-inner">
     <div class="hero-tag">Available for work · Ukraine, Ivano-Frankivsk</div>
     <h1>Dmytro<br/><span class="highlight">Koliush</span></h1>
-    <div class="hero-role">iOS Engineer &nbsp;·&nbsp; 6+ years of experience</div>
+    <div class="hero-typed-wrap">
+      <span class="hero-typed" id="typed-text"></span>
+    </div>
+    <div class="hero-role-sub">6+ years of experience</div>
     <p class="hero-bio">
       iOS Engineer with a product-focused mindset, delivering business value through clean, maintainable code. Led the design and launch of a multi-product iOS suite using Clean Architecture, MVVM+C and SwiftUI, achieving a 99.9% crash-free rate and supporting thousands of active users in the US market. Built and published over 30 apps.
     </p>
@@ -240,64 +274,64 @@
 
 <!-- SKILLS -->
 <div class="section" id="skills">
-  <div class="section-header">
+  <div class="section-header fade-in">
     <div class="section-num">01 — Skills</div>
     <div class="section-title">Technical expertise</div>
   </div>
   <div class="skills-grid">
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Languages</div>
       <div class="skill-value">Swift, Objective-C</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">UI</div>
       <div class="skill-value">SwiftUI, UIKit, SnapKit</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Architecture</div>
       <div class="skill-value">Clean Architecture, MVVM, MVVM+C, MVC, VIPER</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Concurrency</div>
       <div class="skill-value">Swift Concurrency (async/await), GCD, Combine</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Networking</div>
       <div class="skill-value">REST API, GraphQL, URLSession, WebSockets</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Persistence</div>
       <div class="skill-value">CoreData, SwiftData, CloudKit, Realm, Keychain</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Media</div>
       <div class="skill-value">AVFoundation, AVPlayer, VLCKit, Picture-in-Picture</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Apple Frameworks</div>
       <div class="skill-value">CoreML, Vision, SoundAnalysis, CreateML, MapKit, CoreLocation</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Security</div>
       <div class="skill-value">OAuth 2.0, biometric authentication, AES-256 encryption, iOSSecuritySuite</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Payments</div>
       <div class="skill-value">StoreKit, RevenueCat (subscriptions, in-app purchases)</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">DevOps</div>
       <div class="skill-value">CI/CD, GitHub Actions, Fastlane, CircleCI</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Testing</div>
       <div class="skill-value">Unit Testing, Snapshot Testing, A/B Testing</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Tools & SDKs</div>
       <div class="skill-value">Firebase, OneSignal, AdMob, Facebook SDK</div>
     </div>
-    <div class="skill-row">
+    <div class="skill-row fade-in">
       <div class="skill-label">Version Control</div>
       <div class="skill-value">Git, GitFlow, Trunk-based development</div>
     </div>
@@ -308,13 +342,13 @@
 
 <!-- WORK HISTORY -->
 <div class="section" id="experience">
-  <div class="section-header">
+  <div class="section-header fade-in">
     <div class="section-num">02 — Experience</div>
     <div class="section-title">Work history</div>
   </div>
   <div class="work-list">
 
-    <div class="work-item">
+    <div class="work-item fade-in">
       <div class="work-meta">
         <div class="work-company">Natife</div>
         <div class="work-period">Oct 2020 — Present</div>
@@ -336,7 +370,7 @@
       </div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item fade-in">
       <div class="work-meta">
         <div class="work-company">DB2</div>
         <div class="work-period">Nov 2019 — Oct 2020</div>
@@ -351,7 +385,7 @@
       </div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item fade-in">
       <div class="work-meta">
         <div class="work-company">MindStudios</div>
         <div class="work-period">Feb 2019 — Jul 2019</div>
@@ -373,13 +407,13 @@
 
 <!-- APPS -->
 <div class="section" id="apps">
-  <div class="section-header">
+  <div class="section-header fade-in">
     <div class="section-num">03 — Portfolio</div>
     <div class="section-title">Published apps</div>
   </div>
   <div class="apps-grid">
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/10/fb/7c/10fb7c7e-59e2-f956-ecfd-642b4d3edf57/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/100x100bb.jpg" alt="VitaGlow" />
         <div class="app-name">VitaGlow – AI Vitamin Tracker</div>
@@ -391,7 +425,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c0/e8/6f/c0e86f14-14ac-aa2a-6b8a-d00433235ba2/AppIcon-0-0-1x_U007ephone-0-1-85-220.jpeg/100x100bb.jpg" alt="Calorie Counter AI" />
         <div class="app-name">Calorie Counter - AI</div>
@@ -402,7 +436,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/25/02/5d250205-16c0-0e36-8f72-0281f68e4fbb/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/100x100bb.jpg" alt="Amulet" />
         <div class="app-name">Amulet: Evil Eye Widget</div>
@@ -414,7 +448,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/26/05/62/260562de-ad48-ded0-9d9c-26f5f62da04b/AppIcon-0-0-1x_U007epad-0-1-sRGB-85-220.png/100x100bb.jpg" alt="Footy Quiz" />
         <div class="app-name">Footy Quiz: Guess the Player</div>
@@ -426,7 +460,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b3/fe/31/b3fe31f7-b2a9-b6df-d65d-43990019b367/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg" alt="Case Simulator 3.0" />
         <div class="app-name">Case Simulator 3.0</div>
@@ -437,7 +471,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/40/1d/f6/401df66d-fb94-70ce-99a7-d78386776dcf/AppIcon-0-1x_U007emarketing-0-7-0-85-220.png/100x100bb.jpg" alt="CS:GO Quiz Trivia" />
         <div class="app-name">CS:GO Quiz Trivia</div>
@@ -448,7 +482,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/91/1c/17/911c170c-c043-5af7-03b8-d51036711628/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg" alt="Fort Quiz Trivia" />
         <div class="app-name">Fort Quiz Trivia</div>
@@ -459,7 +493,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/89/5d/85/895d859a-3815-43a3-3c99-74239dffd6d1/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/100x100bb.jpg" alt="Fortnity Cases" />
         <div class="app-name">Fortnity Cases</div>
@@ -470,7 +504,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b7/fe/82/b7fe8264-f8b3-c348-116f-1bad4a0f884e/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg" alt="Case Simulator 3" />
         <div class="app-name">Case Simulator 3</div>
@@ -482,7 +516,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/4c/03/9b/4c039bc6-7b3e-7c9d-32ea-d534fd216b24/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/100x100bb.jpg" alt="CS:GO Quiz" />
         <div class="app-name">CS:GO Quiz</div>
@@ -493,7 +527,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card fade-in">
       <div class="app-header">
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/2d/b1/f2/2db1f243-c754-58c5-09f0-6fd61698f83c/AppIcon-1x_U007emarketing-0-7-0-0-sRGB-85-220.png/100x100bb.jpg" alt="GetSkins" />
         <div class="app-name">GetSkins</div>
@@ -511,20 +545,105 @@
   © <span id="year"></span> Dmytro Koliush · dimonuch1@gmail.com
 
 <script>
+  // ── Year ──
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // ── Hamburger ──
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
   });
-
   function closeMenu() {
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
   }
+
+  // ── Typing effect ──
+  (function() {
+    const el = document.getElementById('typed-text');
+    const text = 'iOS Engineer';
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.textContent += text[i++];
+        setTimeout(type, 115);
+      }
+    }
+    setTimeout(type, 500);
+  })();
+
+  // ── Particles ──
+  (function() {
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      const hero = canvas.parentElement;
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+
+    function Particle() {
+      this.reset = function(randomY) {
+        this.x = Math.random() * canvas.width;
+        this.y = randomY !== undefined ? randomY : Math.random() * canvas.height;
+        this.r = Math.random() * 2 + 0.4;
+        this.vx = (Math.random() - 0.5) * 0.35;
+        this.vy = (Math.random() - 0.5) * 0.35;
+        this.a = Math.random() * 0.35 + 0.08;
+        this.rgb = Math.random() > 0.45 ? '108,142,255' : '165,184,255';
+      };
+      this.reset(Math.random() * canvas.height);
+    }
+
+    function init() {
+      resize();
+      particles = [];
+      const n = Math.min(Math.floor(canvas.width * canvas.height / 10000), 90);
+      for (let i = 0; i < n; i++) particles.push(new Particle());
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -5 || p.x > canvas.width + 5 || p.y < -5 || p.y > canvas.height + 5) {
+          p.reset();
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.rgb},${p.a})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+
+    init();
+    draw();
+    window.addEventListener('resize', init);
+  })();
+
+  // ── Fade-in on scroll ──
+  (function() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, idx) => {
+        if (entry.isIntersecting) {
+          // stagger delay for grid items
+          const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
+          let delay = 0;
+          siblings.forEach((el, i) => { if (el === entry.target) delay = i * 60; });
+          entry.target.style.transitionDelay = Math.min(delay, 300) + 'ms';
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  })();
 </script>
 </footer>
 
