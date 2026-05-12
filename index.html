@@ -101,8 +101,21 @@
     }
     .hero-bio {
       font-size: 1rem; color: rgba(226,228,239,0.65);
-      line-height: 1.8; max-width: 580px; margin-bottom: 40px;
+      line-height: 1.8; max-width: 580px; margin-bottom: 28px;
     }
+    .hero-services { display: flex; flex-direction: column; gap: 8px; margin-bottom: 36px; max-width: 520px; }
+    .hero-service {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(108,142,255,0.06);
+      border: 1px solid rgba(108,142,255,0.15);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px;
+    }
+    .hero-service-icon { font-size: 1.15rem; flex-shrink: 0; }
+    .hero-service-info { display: flex; flex-direction: column; gap: 2px; }
+    .hero-service-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem; color: #fff; }
+    .hero-service-text { font-size: 0.8rem; color: var(--muted); }
 
     /* ─── SOCIAL ICONS ─── */
     .find-me { margin-bottom: 0; }
@@ -241,6 +254,30 @@
       iOS Engineer with a product-focused mindset, delivering business value through clean, maintainable code. Led the design and launch of a multi-product iOS suite using Clean Architecture, MVVM+C and SwiftUI, achieving a 99.9% crash-free rate and supporting thousands of active users in the US market. Built and published over 30 apps.
     </p>
 
+    <div class="hero-services">
+      <div class="hero-service">
+        <div class="hero-service-icon">🚀</div>
+        <div class="hero-service-info">
+          <div class="hero-service-title">MVP from idea to App Store</div>
+          <div class="hero-service-text">Full-cycle iOS development — architecture, code, and release</div>
+        </div>
+      </div>
+      <div class="hero-service">
+        <div class="hero-service-icon">🛠️</div>
+        <div class="hero-service-info">
+          <div class="hero-service-title">App support & maintenance</div>
+          <div class="hero-service-text">Bug fixes, updates, and performance improvements</div>
+        </div>
+      </div>
+      <div class="hero-service">
+        <div class="hero-service-icon">👥</div>
+        <div class="hero-service-info">
+          <div class="hero-service-title">Ready to join your team</div>
+          <div class="hero-service-text">Available for full-time or contract iOS roles</div>
+        </div>
+      </div>
+    </div>
+
     <div class="find-me">
       <div class="find-me-label">Find me on</div>
       <div class="social-links">
@@ -374,12 +411,12 @@
         <ul class="work-bullets">
           <li>Led a cross-functional iOS team (backend, Android, design, QA), driving product decisions and technical direction across multiple products</li>
           <li>Shipped and maintained production apps with a 99.9% crash-free rate, serving thousands of active users in the US market</li>
-          <li>Built UIs with SwiftUI and Swift Concurrency (Async/Await), keeping the main thread fully unblocked</li>
+          <li>Built UIs with SwiftUI and Swift Concurrency (async/await), keeping the main thread fully unblocked</li>
           <li>Owned the full data layer: REST/GraphQL networking, local persistence (CoreData, SwiftData + CloudKit), caching strategies, and offline-first architecture</li>
           <li>Implemented security best practices including Keychain storage, biometric authentication (Face ID / Touch ID), and AES-256 encryption</li>
           <li>Integrated AVFoundation (custom video player with PiP), OAuth 2.0, CoreLocation, WeatherKit, and cloud storage (Dropbox, OneDrive)</li>
           <li>Built AI-driven features using OpenAI APIs, reducing inference costs by ~30% while maintaining accuracy</li>
-          <li>Developed across Apple ecosystem: iOS, macOS, tvOS, watchOS</li>
+          <li>Developed across the Apple ecosystem: iOS, macOS, tvOS, watchOS</li>
           <li>Reduced image loading time by ~50% and cut memory usage by ~25% through custom caching and lazy-loading strategies</li>
         </ul>
       </div>
@@ -524,7 +561,7 @@
         <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b7/fe/82/b7fe8264-f8b3-c348-116f-1bad4a0f884e/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg" alt="Case Simulator 3" />
         <div class="app-name">Case Simulator 3</div>
       </div>
-      <div class="app-desc">The original CS:GO case opening simulator. Unbox rare skins, win Knives, Jackpot and Leaderboard.</div>
+      <div class="app-desc">The original CS:GO case opening simulator. Unbox rare skins, win Knives, and compete in Jackpot mode and on the global Leaderboard.</div>
       <div class="app-actions">
         <a href="https://apps.apple.com/ua/app/case-simulator-3/id1455782936" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
         <a href="/CaseSimulator3/" class="app-btn site">🌐 Website</a>
