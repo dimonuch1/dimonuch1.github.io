@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amulet: Evil Eye Widget — Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-dark: #9a7a2e;
+      --bg: #0d0d1a;
+      --bg-card: #12122a;
+      --radius: 20px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #e8e8f0; overflow-x: hidden; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,13,26,0.92); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4rem; color: #e8e8f0; text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: rgba(232,232,240,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .hero {
+      padding: 110px 5% 60px; text-align: center; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(36,53,128,0.5) 0%, transparent 70%);
+    }
+    .hero-particles { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(201,168,76,0.2) 1px, transparent 1px); background-size: 44px 44px; opacity: 0.5; }
+    .hero-content { position: relative; max-width: 640px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: rgba(201,168,76,0.15); color: var(--gold); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 18px; border-radius: 100px; border: 1px solid rgba(201,168,76,0.3); margin-bottom: 22px; }
+    .hero h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.12; margin-bottom: 18px; color: #fff; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero p { font-size: 1.05rem; color: rgba(232,232,240,0.7); line-height: 1.7; }
+    .screenshots { padding: 60px 5%; max-width: 1100px; margin: 0 auto; }
+    .screenshots-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.4rem, 3vw, 2rem); text-align: center; color: #fff; margin-bottom: 8px; }
+    .screenshots-sub { text-align: center; color: rgba(232,232,240,0.5); font-size: 0.9rem; margin-bottom: 40px; }
+    .phone-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .phone-frame { position: relative; width: 200px; flex-shrink: 0; }
+    .phone-frame img { width: 100%; border-radius: 36px; box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,168,76,0.15); }
+    .phone-label { text-align: center; margin-top: 14px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; color: rgba(232,232,240,0.5); }
+    .symbols-section { padding: 20px 5% 60px; max-width: 900px; margin: 0 auto; text-align: center; }
+    .symbols-section img { width: 100%; max-width: 560px; border-radius: 24px; box-shadow: 0 16px 48px rgba(0,0,0,0.6); border: 1px solid rgba(201,168,76,0.2); }
+    .section { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
+    .section-label { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 40px; line-height: 1.2; color: #fff; }
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } }
+    .card { background: var(--bg-card); border-radius: var(--radius); padding: 32px 28px; border: 1.5px solid rgba(201,168,76,0.15); }
+    .card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+    .card p { color: rgba(232,232,240,0.65); font-size: 0.93rem; line-height: 1.65; margin-bottom: 20px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #1a1a2e; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem; padding: 12px 24px; border-radius: 100px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .btn:hover { background: #e0c060; transform: translateY(-1px); }
+    .btn.outline { background: transparent; color: var(--gold); border: 2px solid rgba(201,168,76,0.5); }
+    .btn.outline:hover { background: rgba(201,168,76,0.1); }
+    .faq-card { background: var(--bg-card); border-radius: var(--radius); padding: 32px 28px; border: 1.5px solid rgba(201,168,76,0.15); }
+    .faq-item { border-bottom: 1px solid rgba(201,168,76,0.1); padding: 18px 0; }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-item h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; margin-bottom: 6px; color: #fff; }
+    .faq-item p { color: rgba(232,232,240,0.6); font-size: 0.88rem; line-height: 1.6; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent); margin: 0 5%; opacity: 0.6; }
+    footer { background: #08080f; color: rgba(232,232,240,0.5); padding: 40px 5%; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); }
+    .footer-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.3rem; color: #fff; margin-bottom: 6px; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.85rem; margin-bottom: 16px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(232,232,240,0.4); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">🧿 <span>Amulet</span></a>
+  <div class="nav-links">
+    <a href="#contact">Contact</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🧿 Amulet: Evil Eye Widget</div>
+    <h1>Ancient protection.<br/><em>On your screen.</em></h1>
+    <p>Have a question or need help with Amulet? Find answers below or reach out directly.</p>
+  </div>
+</section>
+
+<div class="screenshots">
+  <div class="screenshots-title">Symbols on Your Home Screen</div>
+  <div class="screenshots-sub">Small, Medium &amp; Large widgets &mdash; customizable to your taste</div>
+  <div class="phone-row">
+    <div class="phone-frame">
+      <img src="https://raw.githubusercontent.com/dimonuch1/AI-Calories-Counter/main/amulet_screen3.jpeg" alt="Evil Eye widgets" />
+      <div class="phone-label">Evil Eye variants</div>
+    </div>
+    <div class="phone-frame">
+      <img src="https://raw.githubusercontent.com/dimonuch1/AI-Calories-Counter/main/amulet_screen2.jpeg" alt="Hamsa widgets" />
+      <div class="phone-label">Hamsa variants</div>
+    </div>
+    <div class="phone-frame">
+      <img src="https://raw.githubusercontent.com/dimonuch1/AI-Calories-Counter/main/amulet_screen1.jpeg" alt="All symbols" />
+      <div class="phone-label">All symbols</div>
+    </div>
+  </div>
+</div>
+
+<div class="symbols-section">
+  <img src="https://raw.githubusercontent.com/dimonuch1/AI-Calories-Counter/main/amulet_symbols.png" alt="Symbols of Protection reference guide" />
+</div>
+
+<div class="divider"></div>
+
+<section class="section" id="contact">
+  <div class="section-label">Get in touch</div>
+  <div class="section-title">Contact &amp; Legal</div>
+  <div class="cards-grid">
+    <div class="card">
+      <h3>📧 Contact Support</h3>
+      <p>Having trouble with the app or have a question? Send us an email and we'll respond within 24&ndash;48 hours.</p>
+      <a href="mailto:aicaloriescounter@gmail.com" class="btn">Send Email</a>
+    </div>
+    <div class="card">
+      <h3>📋 Terms of Use (EULA)</h3>
+      <p>Amulet uses the standard Apple End User License Agreement for all users.</p>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" class="btn outline" target="_blank" rel="noopener">View Terms of Use &nearr;</a>
+    </div>
+    <div class="card">
+      <h3>🔒 Privacy Policy</h3>
+      <p>Learn how Amulet collects, uses, and protects your personal data.</p>
+      <a href="privacy.html" class="btn outline">View Privacy Policy &nearr;</a>
+    </div>
+    <div class="card">
+      <h3>🍎 App Store</h3>
+      <p>Download Amulet on the App Store and place your protection symbols on your Home Screen today.</p>
+      <a href="https://apps.apple.com/app/amulet-evil-eye-widget" class="btn outline" target="_blank" rel="noopener">Download App &nearr;</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="faq">
+  <div class="section-label">FAQ</div>
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-card">
+    <div class="faq-item">
+      <h4>How do I add a widget to my Home Screen?</h4>
+      <p>Long-press on your Home Screen, tap the &ldquo;+&rdquo; button, search for &ldquo;Amulet&rdquo;, and choose your preferred widget size. Then configure your symbol inside the app.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Which protection symbols are available?</h4>
+      <p>Evil Eye (Nazar), Hamsa, Eye of Horus, Triquetra, Witches Knot, Bindrune, Pentacle, and Unicursal Hexagram &mdash; each with multiple artistic variations.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I customize the widget background?</h4>
+      <p>Yes! Choose from 20+ background color presets or use the custom color picker to match your wallpaper.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How many widgets can I create?</h4>
+      <p>Unlimited widget configurations across Small, Medium, and Large sizes.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Still need help?</h4>
+      <p>Email us at <a href="mailto:aicaloriescounter@gmail.com" style="color: var(--gold); font-weight: 600;">aicaloriescounter@gmail.com</a> and we&apos;ll get back to you quickly.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🧿 <span>Amulet</span></div>
+  <p>Protection Symbol Widgets for iOS</p>
+  <div class="footer-links">
+    <a href="#contact">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Use (EULA)</a>
+  </div>
+  <br/>
+  <p style="font-size: 0.78rem; opacity: 0.4;">&copy; 2025 Amulet. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

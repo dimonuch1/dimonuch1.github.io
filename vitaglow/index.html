@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitaGlow — Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #7DC832;
+      --green-dark: #5a9e1f;
+      --green-light: #e8f5d4;
+      --green-mid: #c5e89a;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --bg: #f7faf2;
+      --card: #ffffff;
+      --radius: 20px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(247,250,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(125,200,50,0.15); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4rem; color: var(--green-dark); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-dark); }
+    .hero { padding: 120px 5% 60px; text-align: center; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(125,200,50,0.15) 0%, transparent 70%); }
+    .hero-dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(125,200,50,0.25) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4; }
+    .hero-content { position: relative; max-width: 600px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: var(--green-light); color: var(--green-dark); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 em { color: var(--green); font-style: normal; }
+    .hero p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; }
+    .section { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
+    .section-label { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .section-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 40px; line-height: 1.2; }
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    @media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border-radius: var(--radius); padding: 32px 28px; border: 1.5px solid rgba(125,200,50,0.15); }
+    .card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; }
+    .card p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.65; margin-bottom: 20px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: white; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem; padding: 12px 24px; border-radius: 100px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn.outline { background: transparent; color: var(--green-dark); border: 2px solid var(--green); }
+    .btn.outline:hover { background: var(--green-light); }
+    .faq-card { background: var(--card); border-radius: var(--radius); padding: 32px 28px; border: 1.5px solid rgba(125,200,50,0.15); }
+    .faq-item { border-bottom: 1px solid var(--green-light); padding: 18px 0; }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-item h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; margin-bottom: 6px; }
+    .faq-item p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--green-mid), transparent); margin: 0 5%; opacity: 0.6; }
+    footer { background: #1a2810; color: rgba(255,255,255,0.6); padding: 40px 5%; text-align: center; }
+    .footer-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.3rem; color: white; margin-bottom: 6px; }
+    .footer-logo span { color: var(--green); }
+    footer p { font-size: 0.85rem; margin-bottom: 16px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--green); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">🌿 Vita<span>Glow</span></a>
+    <div class="nav-links">
+      <a href="#contact">Contact</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-dots"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🌿 VitaGlow</div>
+      <h1>We're here<br/>to <em>help you</em></h1>
+      <p>Have a question or need help with VitaGlow? Find answers below or reach out directly.</p>
+    </div>
+  </section>
+  <section class="section" id="contact">
+    <div class="section-label">Get in touch</div>
+    <div class="section-title">Contact &amp; Legal</div>
+    <div class="cards-grid">
+      <div class="card">
+        <h3>📧 Contact Support</h3>
+        <p>Having trouble with the app or have a question? Send us an email and we'll respond within 24–48 hours.</p>
+        <a href="mailto:aicaloriescounter@gmail.com" class="btn">Send Email</a>
+      </div>
+      <div class="card">
+        <h3>📋 Terms of Use (EULA)</h3>
+        <p>VitaGlow uses the standard Apple End User License Agreement for all users.</p>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" class="btn outline" target="_blank" rel="noopener">View Terms of Use ↗</a>
+      </div>
+      <div class="card">
+        <h3>🔒 Privacy Policy</h3>
+        <p>Learn how VitaGlow collects, uses, and protects your personal data.</p>
+        <a href="privacy.html" class="btn outline">View Privacy Policy ↗</a>
+      </div>
+      <div class="card">
+        <h3>🍎 App Store</h3>
+        <p>Download VitaGlow on the App Store and start tracking your vitamins today.</p>
+        <a href="https://apps.apple.com/app/vitaglow" class="btn outline" target="_blank" rel="noopener">Download App ↗</a>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+  <section class="section" id="faq">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">Frequently Asked Questions</div>
+    <div class="faq-card">
+      <div class="faq-item">
+        <h4>How does AI meal scanning work?</h4>
+        <p>Simply take a photo of your meal. Our AI analyzes the image and estimates the vitamins and nutrients present based on the ingredients it identifies.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How do I cancel my subscription?</h4>
+        <p>You can cancel anytime through your iPhone Settings → Apple ID → Subscriptions → VitaGlow. Your access continues until the end of the billing period.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is my health data safe?</h4>
+        <p>Yes. We do not sell or share your personal health data with third parties. See our Privacy Policy for full details.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How accurate is the vitamin tracking?</h4>
+        <p>VitaGlow uses AI to estimate nutrient content based on visual analysis. Results are approximate and intended as a helpful guide, not a medical diagnosis.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Still need help?</h4>
+        <p>Email us at <a href="mailto:aicaloriescounter@gmail.com" style="color: var(--green-dark); font-weight: 600;">aicaloriescounter@gmail.com</a> and we'll get back to you quickly.</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-logo">🌿 Vita<span>Glow</span></div>
+    <p>AI-powered vitamin &amp; nutrient tracking for iOS</p>
+    <div class="footer-links">
+      <a href="#contact">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Use (EULA)</a>
+    </div>
+    <br/>
+    <p style="font-size: 0.78rem; opacity: 0.4;">© 2025 VitaGlow. All rights reserved.</p>
+  </footer>
+</body>
+</html>
