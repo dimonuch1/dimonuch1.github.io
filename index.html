@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dmytro Koliush — iOS Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0d11;
+      --bg2: #13161d;
+      --bg-card: #181c24;
+      --border: rgba(255,255,255,0.07);
+      --accent: #6C8EFF;
+      --accent2: #a5b8ff;
+      --text: #e2e4ef;
+      --muted: rgba(226,228,239,0.45);
+      --radius: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(11,13,17,0.9); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%; display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    .nav-name { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #fff; text-decoration: none; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+    .nav-swift-logo { width: 24px; height: 24px; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 0.83rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+
+    /* ─── HAMBURGER ─── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: rgba(226,228,239,0.7); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
+      background: rgba(11,13,17,0.97); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: 16px 6% 24px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; color: var(--muted); text-decoration: none; padding: 12px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      display: flex; align-items: center;
+      padding: 100px 6% 48px; max-width: 1100px; margin: 0 auto;
+    }
+    .hero-inner { max-width: 720px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(108,142,255,0.1); color: var(--accent2);
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px;
+      border: 1px solid rgba(108,142,255,0.2); margin-bottom: 28px;
+    }
+    .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: block; }
+    .hero h1 {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.05;
+      color: #fff; letter-spacing: -0.02em; margin-bottom: 6px;
+    }
+    .hero h1 .highlight { color: var(--accent); }
+    .swift-logo { width: 48px; height: 48px; opacity: 0.85; display: block; margin-bottom: 20px; }
+    .hero-role {
+      font-family: 'Nunito', sans-serif; font-weight: 700;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--muted); margin-bottom: 28px; letter-spacing: -0.01em;
+    }
+    .hero-bio {
+      font-size: 1rem; color: rgba(226,228,239,0.65);
+      line-height: 1.8; max-width: 580px; margin-bottom: 40px;
+    }
+
+    /* ─── SOCIAL ICONS ─── */
+    .find-me { margin-bottom: 0; }
+    .find-me-label {
+      font-family: 'Nunito', sans-serif; font-weight: 700;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 14px;
+    }
+    .social-links { display: flex; gap: 14px; align-items: center; }
+    .social-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 12px;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      color: rgba(226,228,239,0.55);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(108,142,255,0.08); }
+    .social-link svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ─── SECTION SHARED ─── */
+    .section { padding: 48px 6% 80px; max-width: 1100px; margin: 0 auto; }
+    .section-header { margin-bottom: 48px; }
+    .section-num { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .section-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.2rem); color: #fff; }
+    .divider { height: 1px; background: linear-gradient(90deg, rgba(108,142,255,0.3), transparent); margin: 0 6%; opacity: 0.5; }
+
+    /* ─── SKILLS ─── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .skill-row { background: var(--bg-card); border-radius: var(--radius); padding: 22px 24px; border: 1px solid var(--border); }
+    .skill-label { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+    .skill-value { font-size: 0.9rem; color: rgba(226,228,239,0.7); line-height: 1.65; }
+
+    /* ─── WORK HISTORY ─── */
+    .work-list { display: flex; flex-direction: column; gap: 0; }
+    .work-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 40px; padding: 40px 0; border-bottom: 1px solid var(--border); position: relative; }
+    .work-item:last-child { border-bottom: none; }
+    @media (max-width: 700px) {
+      .work-item { grid-template-columns: 1fr; gap: 16px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    .work-meta { }
+    .work-company { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #fff; margin-bottom: 4px; }
+    .work-period { font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; }
+    .work-badge {
+      display: inline-block; background: rgba(108,142,255,0.12); color: var(--accent2);
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.72rem;
+      padding: 3px 10px; border-radius: 100px; border: 1px solid rgba(108,142,255,0.2);
+    }
+    .work-content { }
+    .work-role { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; color: #fff; margin-bottom: 14px; }
+    .work-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .work-bullets li { font-size: 0.9rem; color: rgba(226,228,239,0.6); line-height: 1.7; padding-left: 16px; position: relative; }
+    .work-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--accent); }
+
+    /* ─── APPS ─── */
+    .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+    .app-card {
+      background: var(--bg-card); border-radius: var(--radius); padding: 22px 20px;
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 10px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .app-card:hover { transform: translateY(-3px); border-color: rgba(108,142,255,0.3); }
+    .app-header { display: flex; align-items: center; gap: 14px; }
+    .app-icon { width: 52px; height: 52px; border-radius: 13px; object-fit: cover; flex-shrink: 0; }
+    .app-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: #fff; line-height: 1.3; }
+    .app-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .app-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .app-btn {
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.75rem;
+      padding: 5px 13px; border-radius: 100px; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .app-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+    .app-btn.store { background: rgba(255,255,255,0.09); color: rgba(226,228,239,0.8); }
+    .app-btn.site  { background: rgba(108,142,255,0.12); color: var(--accent2); border: 1px solid rgba(108,142,255,0.2); }
+
+    /* ─── FOOTER ─── */
+    footer { text-align: center; padding: 40px 6%; color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-name">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" class="nav-swift-logo" alt="Swift" />
+    Dmytro Koliush
+  </a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#apps">Apps</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="closeMenu()">Home</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#apps" onclick="closeMenu()">Apps</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Available for work · Ukraine, Ivano-Frankivsk</div>
+    <h1>Dmytro<br/><span class="highlight">Koliush</span></h1>
+    <div class="hero-role">iOS Engineer &nbsp;·&nbsp; 6+ years of experience</div>
+    <p class="hero-bio">
+      iOS Engineer with a product-focused mindset, delivering business value through clean, maintainable code. Led the design and launch of a multi-product iOS suite using Clean Architecture, MVVM+C and SwiftUI, achieving a 99.9% crash-free rate and supporting thousands of active users in the US market. Built and published over 30 apps.
+    </p>
+
+    <div class="find-me">
+      <div class="find-me-label">Find me on</div>
+      <div class="social-links">
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/dmytro-koliush-a287aab9/" class="social-link" target="_blank" rel="noopener" title="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/homecat116" class="social-link" target="_blank" rel="noopener" title="Telegram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:dimonuch1@gmail.com" class="social-link" title="Email">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="section-header">
+    <div class="section-num">01 — Skills</div>
+    <div class="section-title">Technical expertise</div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-row">
+      <div class="skill-label">Languages</div>
+      <div class="skill-value">Swift, Objective-C</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">UI</div>
+      <div class="skill-value">SwiftUI, UIKit, SnapKit</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Architecture</div>
+      <div class="skill-value">Clean Architecture, MVVM, MVVM+C, MVC, VIPER</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Concurrency</div>
+      <div class="skill-value">Swift Concurrency (async/await), GCD, Combine</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Networking</div>
+      <div class="skill-value">REST API, GraphQL, URLSession, WebSockets</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Persistence</div>
+      <div class="skill-value">CoreData, SwiftData, CloudKit, Realm, Keychain</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Media</div>
+      <div class="skill-value">AVFoundation, AVPlayer, VLCKit, Picture-in-Picture</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Apple Frameworks</div>
+      <div class="skill-value">CoreML, Vision, SoundAnalysis, CreateML, MapKit, CoreLocation</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Security</div>
+      <div class="skill-value">OAuth 2.0, biometric authentication, AES-256 encryption, iOSSecuritySuite</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Payments</div>
+      <div class="skill-value">StoreKit, RevenueCat (subscriptions, in-app purchases)</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">DevOps</div>
+      <div class="skill-value">CI/CD, GitHub Actions, Fastlane, CircleCI</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Testing</div>
+      <div class="skill-value">Unit Testing, Snapshot Testing, A/B Testing</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Tools & SDKs</div>
+      <div class="skill-value">Firebase, OneSignal, AdMob, Facebook SDK</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Version Control</div>
+      <div class="skill-value">Git, GitFlow, Trunk-based development</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- WORK HISTORY -->
+<div class="section" id="experience">
+  <div class="section-header">
+    <div class="section-num">02 — Experience</div>
+    <div class="section-title">Work history</div>
+  </div>
+  <div class="work-list">
+
+    <div class="work-item">
+      <div class="work-meta">
+        <div class="work-company">Natife</div>
+        <div class="work-period">Oct 2020 — Present</div>
+        <div class="work-badge">Current</div>
+      </div>
+      <div class="work-content">
+        <div class="work-role">iOS Engineer</div>
+        <ul class="work-bullets">
+          <li>Led a cross-functional iOS team (backend, Android, design, QA), driving product decisions and technical direction across multiple products</li>
+          <li>Shipped and maintained production apps with a 99.9% crash-free rate, serving thousands of active users in the US market</li>
+          <li>Built UIs with SwiftUI and Swift Concurrency (Async/Await), keeping the main thread fully unblocked</li>
+          <li>Owned the full data layer: REST/GraphQL networking, local persistence (CoreData, SwiftData + CloudKit), caching strategies, and offline-first architecture</li>
+          <li>Implemented security best practices including Keychain storage, biometric authentication (Face ID / Touch ID), and AES-256 encryption</li>
+          <li>Integrated AVFoundation (custom video player with PiP), OAuth 2.0, CoreLocation, WeatherKit, and cloud storage (Dropbox, OneDrive)</li>
+          <li>Built AI-driven features using OpenAI APIs, reducing inference costs by ~30% while maintaining accuracy</li>
+          <li>Developed across Apple ecosystem: iOS, macOS, tvOS, watchOS</li>
+          <li>Reduced image loading time by ~50% and cut memory usage by ~25% through custom caching and lazy-loading strategies</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-meta">
+        <div class="work-company">DB2</div>
+        <div class="work-period">Nov 2019 — Oct 2020</div>
+      </div>
+      <div class="work-content">
+        <div class="work-role">Junior iOS Developer</div>
+        <ul class="work-bullets">
+          <li>Developed iOS apps using UIKit, adhering to modular architecture and presentation patterns such as MVVM and MVP</li>
+          <li>Participated in release cycles, ensuring stability and consistency across app updates</li>
+          <li>Collaborated with the team on debugging, performance improvements, and maintaining a clean, scalable codebase</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-meta">
+        <div class="work-company">MindStudios</div>
+        <div class="work-period">Feb 2019 — Jul 2019</div>
+      </div>
+      <div class="work-content">
+        <div class="work-role">Intern iOS Developer</div>
+        <ul class="work-bullets">
+          <li>Supported existing gaming projects and implemented new screens using UIKit and VIPER architecture</li>
+          <li>Worked with the backend via REST API</li>
+          <li>Collaborated with the product team to discuss future features and improve user experience</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- APPS -->
+<div class="section" id="apps">
+  <div class="section-header">
+    <div class="section-num">03 — Portfolio</div>
+    <div class="section-title">Published apps</div>
+  </div>
+  <div class="apps-grid">
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/10/fb/7c/10fb7c7e-59e2-f956-ecfd-642b4d3edf57/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/100x100bb.jpg" alt="VitaGlow" />
+        <div class="app-name">VitaGlow – AI Vitamin Tracker</div>
+      </div>
+      <div class="app-desc">AI-powered vitamin and nutrient tracking. Take a photo of your meal and get a full breakdown instantly.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/vitaglow-ai-vitamin-tracker/id6757606373" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+        <a href="/vitaglow/" class="app-btn site">🌐 Website</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c0/e8/6f/c0e86f14-14ac-aa2a-6b8a-d00433235ba2/AppIcon-0-0-1x_U007ephone-0-1-85-220.jpeg/100x100bb.jpg" alt="Calorie Counter AI" />
+        <div class="app-name">Calorie Counter - AI</div>
+      </div>
+      <div class="app-desc">Effortless calorie tracking powered by AI. Snap a photo of any meal to instantly log calories and macros.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/calorie-counter-ai/id6741736996" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/25/02/5d250205-16c0-0e36-8f72-0281f68e4fbb/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/100x100bb.jpg" alt="Amulet" />
+        <div class="app-name">Amulet: Evil Eye Widget</div>
+      </div>
+      <div class="app-desc">Ancient protection symbols as beautiful Home Screen widgets. Evil Eye, Hamsa, Eye of Horus and more.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/amulet-evil-eye-widget/id6761311973" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+        <a href="/amulet/" class="app-btn site">🌐 Website</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/26/05/62/260562de-ad48-ded0-9d9c-26f5f62da04b/AppIcon-0-0-1x_U007epad-0-1-sRGB-85-220.png/100x100bb.jpg" alt="Footy Quiz" />
+        <div class="app-name">Footy Quiz: Guess the Player</div>
+      </div>
+      <div class="app-desc">Test your football knowledge — guess the player by hints, stats, and clues.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/footy-quiz-guess-the-player/id6765921169" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+        <a href="/footballquiz/" class="app-btn site">🌐 Website</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b3/fe/31/b3fe31f7-b2a9-b6df-d65d-43990019b367/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg" alt="Case Simulator 3.0" />
+        <div class="app-name">Case Simulator 3.0</div>
+      </div>
+      <div class="app-desc">Updated CS:GO case simulator with new design, sounds, weapon previews and expanded collection.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/case-simulator-3-0/id6447588638" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/40/1d/f6/401df66d-fb94-70ce-99a7-d78386776dcf/AppIcon-0-1x_U007emarketing-0-7-0-85-220.png/100x100bb.jpg" alt="CS:GO Quiz Trivia" />
+        <div class="app-name">CS:GO Quiz Trivia</div>
+      </div>
+      <div class="app-desc">Prove your CS:GO knowledge with hundreds of trivia questions on maps, weapons, pros and history.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/cs-go-quiz-trivia/id1564639645" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/91/1c/17/911c170c-c043-5af7-03b8-d51036711628/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg" alt="Fort Quiz Trivia" />
+        <div class="app-name">Fort Quiz Trivia</div>
+      </div>
+      <div class="app-desc">The ultimate Fortnite trivia quiz — skins, weapons, locations and Battle Royale events.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/fort-quiz-trivia/id1558365293" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/89/5d/85/895d859a-3815-43a3-3c99-74239dffd6d1/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/100x100bb.jpg" alt="Fortnity Cases" />
+        <div class="app-name">Fortnity Cases</div>
+      </div>
+      <div class="app-desc">Open Fortnite-themed virtual cases and collect your favorite skins.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/fortnity-cases/id1517894264" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b7/fe/82/b7fe8264-f8b3-c348-116f-1bad4a0f884e/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg" alt="Case Simulator 3" />
+        <div class="app-name">Case Simulator 3</div>
+      </div>
+      <div class="app-desc">The original CS:GO case opening simulator. Unbox rare skins, win Knives, Jackpot and Leaderboard.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/case-simulator-3/id1455782936" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+        <a href="/CaseSimulator3/" class="app-btn site">🌐 Website</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/4c/03/9b/4c039bc6-7b3e-7c9d-32ea-d534fd216b24/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/100x100bb.jpg" alt="CS:GO Quiz" />
+        <div class="app-name">CS:GO Quiz</div>
+      </div>
+      <div class="app-desc">The original Counter-Strike knowledge quiz — weapons, maps, skins and esports.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/cs-go-quiz/id1474396670" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-header">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/2d/b1/f2/2db1f243-c754-58c5-09f0-6fd61698f83c/AppIcon-1x_U007emarketing-0-7-0-0-sRGB-85-220.png/100x100bb.jpg" alt="GetSkins" />
+        <div class="app-name">GetSkins</div>
+      </div>
+      <div class="app-desc">Browse, collect and showcase CS:GO skins — your virtual inventory of iconic weapon finishes.</div>
+      <div class="app-actions">
+        <a href="https://apps.apple.com/ua/app/getskins/id1482177401" class="app-btn store" target="_blank" rel="noopener">🍎 App Store</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © <span id="year"></span> Dmytro Koliush · dimonuch1@gmail.com
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+</script>
+</footer>
+
+</body>
+</html>
