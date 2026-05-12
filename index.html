@@ -94,7 +94,21 @@
     .hero h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.05; color: #fff; letter-spacing: -0.02em; margin-bottom: 12px; }
     .hero h1 .highlight { color: var(--accent); }
     .hero-typed-wrap { margin-bottom: 10px; min-height: calc(clamp(1.7rem, 4vw, 2.8rem) * 1.2); }
-    .hero-typed { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1.2; background: linear-gradient(120deg, #6C8EFF 0%, #a5b8ff 55%, #c5aeff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-typed {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1.2;
+      background: linear-gradient(90deg, #6C8EFF 0%, #a5b8ff 33%, #c5aeff 66%, #6C8EFF 100%);
+      background-size: 200% auto;
+      background-position: 0% center;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-typed.animated { animation: gradientFlow 4s linear infinite; }
+    @keyframes gradientFlow {
+      0%   { background-position: 0% center; }
+      50%  { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
     .hero-role-sub { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: clamp(0.85rem, 2vw, 1rem); color: var(--muted); margin-bottom: 28px; letter-spacing: -0.01em; }
     .hero-bio { font-size: 1rem; color: rgba(226,228,239,0.65); line-height: 1.8; max-width: 580px; margin-bottom: 28px; }
     .hero-services { display: flex; flex-direction: column; gap: 8px; margin-bottom: 36px; max-width: 520px; }
@@ -750,8 +764,16 @@ document.addEventListener('click', () => langDropdown.classList.remove('open'));
   window.startTyping = function(word) {
     clearTimeout(typeTimer);
     el.textContent = '';
+    el.classList.remove('animated');
     let i = 0;
-    function type() { if (i < word.length) { el.textContent += word[i++]; typeTimer = setTimeout(type, 115); } }
+    function type() {
+      if (i < word.length) {
+        el.textContent += word[i++];
+        typeTimer = setTimeout(type, 115);
+      } else {
+        el.classList.add('animated');
+      }
+    }
     type();
   };
   setTimeout(() => startTyping(i18n[currentLang]['typed-word']), 500);
