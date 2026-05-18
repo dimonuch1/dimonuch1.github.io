@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoops Trivia: Guess the Player — Support</title>
+  <meta name="description" content="Basketball Player Quiz Game — Test your NBA knowledge. Guess the player from hundreds of pro basketball stars." />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #FF6B1A;
+      --accent-dark: #d4520d;
+      --accent-light: rgba(255,107,26,0.12);
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --bg: #0A0F1A;
+      --bg2: #111827;
+      --card: #1a2235;
+      --card-border: rgba(255,107,26,0.2);
+      --radius: 20px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #e8eaf0; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,15,26,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--card-border); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero { padding: 120px 5% 60px; text-align: center; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,107,26,0.15) 0%, transparent 70%); }
+    .hero-dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,107,26,0.2) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4; }
+    .hero-content { position: relative; max-width: 640px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: var(--accent-light); color: var(--accent); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 20px; border: 1px solid rgba(255,107,26,0.3); }
+    .hero h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; margin-bottom: 16px; color: #fff; }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+    .section { padding: 60px 5%; max-width: 960px; margin: 0 auto; }
+    .section-label { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .section-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 40px; line-height: 1.2; color: #fff; }
+
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    @media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border-radius: var(--radius); padding: 32px 28px; border: 1.5px solid var(--card-border); }
+    .card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+    .card p { color: rgba(255,255,255,0.5); font-size: 0.93rem; line-height: 1.65; margin-bottom: 20px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: white; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem; padding: 12px 24px; border-radius: 100px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .btn.outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+    .btn.outline:hover { background: var(--accent-light); }
+
+    .modes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 700px) { .modes-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 420px) { .modes-grid { grid-template-columns: 1fr; } }
+    .mode-card { background: var(--card); border-radius: 16px; padding: 24px 20px; border: 1.5px solid var(--card-border); }
+    .mode-card .mode-tag { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .mode-card h4 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #fff; margin-bottom: 8px; }
+    .mode-card p { color: rgba(255,255,255,0.45); font-size: 0.87rem; line-height: 1.6; }
+
+    .features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 560px) { .features-list { grid-template-columns: 1fr; } }
+    .feature-item { display: flex; align-items: flex-start; gap: 12px; background: var(--card); border-radius: 14px; padding: 18px 20px; border: 1px solid var(--card-border); }
+    .feature-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .feature-item p { color: rgba(255,255,255,0.55); font-size: 0.88rem; line-height: 1.55; margin: 0; }
+    .feature-item strong { color: #fff; font-weight: 700; display: block; margin-bottom: 2px; font-size: 0.92rem; }
+
+    .faq-card { background: var(--card); border-radius: var(--radius); padding: 32px 28px; border: 1.5px solid var(--card-border); }
+    .faq-item { border-bottom: 1px solid rgba(255,107,26,0.12); padding: 18px 0; }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-item h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; margin-bottom: 6px; color: #fff; }
+    .faq-item p { color: rgba(255,255,255,0.5); font-size: 0.88rem; line-height: 1.6; }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,107,26,0.3), transparent); margin: 0 5%; }
+
+    footer { background: #060a12; color: rgba(255,255,255,0.4); padding: 40px 5%; text-align: center; border-top: 1px solid rgba(255,107,26,0.1); }
+    .footer-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.3rem; color: white; margin-bottom: 6px; }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.85rem; margin-bottom: 16px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">🏀 Hoops <span>Trivia</span></a>
+    <div class="nav-links">
+      <a href="#contact">Contact</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-dots"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🏀 Basketball Quiz</div>
+      <h1>We're here<br/>to <em>help you</em></h1>
+      <p>Have a question or need help with Hoops Trivia? Find answers below or reach out directly.</p>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-label">Get in touch</div>
+    <div class="section-title">Contact &amp; Legal</div>
+    <div class="cards-grid">
+      <div class="card">
+        <h3>📧 Contact Support</h3>
+        <p>Having trouble with the app or have a question? Send us an email and we'll respond within 24–48 hours.</p>
+        <a href="mailto:aicaloriescounter@gmail.com" class="btn">Send Email</a>
+      </div>
+      <div class="card">
+        <h3>📋 Terms of Use (EULA)</h3>
+        <p>Hoops Trivia uses the standard Apple End User License Agreement for all users.</p>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" class="btn outline" target="_blank" rel="noopener">View Terms of Use ↗</a>
+      </div>
+      <div class="card">
+        <h3>🔒 Privacy Policy</h3>
+        <p>Learn how Hoops Trivia collects, uses, and protects your personal data.</p>
+        <a href="privacy.html" class="btn outline">View Privacy Policy ↗</a>
+      </div>
+      <div class="card">
+        <h3>🍎 App Store</h3>
+        <p>Download Hoops Trivia on the App Store and start testing your basketball knowledge today.</p>
+        <a href="https://apps.apple.com/app/id6769068796" class="btn outline" target="_blank" rel="noopener">Download App ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-label">Game Modes</div>
+    <div class="section-title">6 Modes for Every Fan</div>
+    <div class="modes-grid">
+      <div class="mode-card">
+        <div class="mode-tag">▶ Level 1</div>
+        <h4>Beginner</h4>
+        <p>Clear photos, popular players. Get into the rhythm and rack up points.</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">▶ Level 2</div>
+        <h4>Casual Fan</h4>
+        <p>More players, sharper questions, faster pace. Step up the challenge.</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">▶ Level 3</div>
+        <h4>Real Fan</h4>
+        <p>Stars from every team, deeper rosters, tougher choices.</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">🔥 Hard</div>
+        <h4>Expert Mode</h4>
+        <p>Faces start getting pixelated. Can you still recognize your favorites?</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">💀 Super Hard</div>
+        <h4>Legend Mode</h4>
+        <p>Heavily pixelated photos. Only true basketball encyclopedias survive.</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">🏆 Team</div>
+        <h4>Squad Challenge</h4>
+        <p>Guess players by the team they belong to. Test your roster knowledge.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-label">Features</div>
+    <div class="section-title">What's Inside</div>
+    <div class="features-list">
+      <div class="feature-item">
+        <span class="feature-icon">🏀</span>
+        <p><strong>Hundreds of Players</strong>From NBA superstars to historic legends across all teams.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✅</span>
+        <p><strong>Multiple Choice</strong>Easy to play, hard to master — pick the right name fast.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🎮</span>
+        <p><strong>Pixelated Challenge</strong>Harder modes blur the face — true fans see through the pixels.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🏆</span>
+        <p><strong>Score Tracking</strong>High score and personal record tracking for endless competition.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔄</span>
+        <p><strong>6 Modes</strong>Endless replayability across all skill levels and formats.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🆓</span>
+        <p><strong>Free to Play</strong>Regular updates with new players added all the time.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section" id="faq">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">Frequently Asked Questions</div>
+    <div class="faq-card">
+      <div class="faq-item">
+        <h4>How do I play Hoops Trivia?</h4>
+        <p>Look at the player's photo, then pick the correct name from three multiple-choice options. On harder levels the face is pixelated, so you'll need to rely on clues like the jersey, build, and team colors.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What is the difference between Hard and Super Hard modes?</h4>
+        <p>In Hard Mode faces are partially pixelated. In Super Hard (Legend Mode) the pixelation is heavy — only players with deep NBA knowledge will recognize the stars from the blur.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How is my score calculated?</h4>
+        <p>You earn points for each correct answer. The game tracks both your current score and your all-time personal record, so you can always try to beat your best.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is Hoops Trivia affiliated with the NBA?</h4>
+        <p>No. This app is not affiliated with, endorsed by, or sponsored by the NBA or any of its teams.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Still need help?</h4>
+        <p>Email us at <a href="mailto:aicaloriescounter@gmail.com" style="color: var(--accent); font-weight: 600;">aicaloriescounter@gmail.com</a> and we'll get back to you quickly.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">🏀 Hoops <span>Trivia</span></div>
+    <p>Basketball Player Quiz Game — Guess the NBA Star!</p>
+    <div class="footer-links">
+      <a href="#contact">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Use (EULA)</a>
+      <a href="mailto:aicaloriescounter@gmail.com">Email Us</a>
+    </div>
+    <br/>
+    <p style="font-size: 0.78rem; opacity: 0.4;">© 2025 Hoops Trivia. All rights reserved. Not affiliated with the NBA.</p>
+  </footer>
+
+</body>
+</html>
