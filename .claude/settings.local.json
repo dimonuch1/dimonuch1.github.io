@@ -4,7 +4,9 @@
       "Bash(ls ~/Downloads/ | grep -iE \"\\\\.\\(png|jpg|jpeg|webp\\)\" | head -20)",
       "Bash(cp ~/Downloads/Gemini_Generated_Image_zde8i6zde8i6zde8.png /Users/kira/Desktop/Projects/dimonuch1.github.io/Hoops_Trivia/icon.png *)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(node -e ' *)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }

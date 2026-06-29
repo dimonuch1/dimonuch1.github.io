@@ -129,7 +129,7 @@
 
     /* ─── SOCIAL ─── */
     .find-me { margin-bottom: 0; }
-    .find-me-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .find-me-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
     .social-links { display: flex; gap: 14px; align-items: center; }
     .social-link { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.1); color: rgba(226,228,239,0.55); text-decoration: none; transition: all 0.2s; }
     .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(108,142,255,0.08); }
@@ -144,9 +144,9 @@
 
     /* ─── SKILLS ─── */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-    .skill-row { background: var(--bg-card); border-radius: var(--radius); padding: 22px 24px; border: 1px solid var(--border); }
-    .skill-icon { font-size: 1.4rem; margin-bottom: 8px; line-height: 1; }
-    .skill-label { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+    .skill-row { background: var(--bg-card); border-radius: var(--radius); padding: 10px 24px 10px 16px; border: 1px solid var(--border); }
+    .skill-icon { font-size: 1.4rem; margin-bottom: 3px; line-height: 1; }
+    .skill-label { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent2); margin-bottom: 3px; }
     .skill-value { font-size: 0.9rem; color: rgba(226,228,239,0.7); line-height: 1.65; }
 
     /* ─── WORK ─── */
@@ -154,6 +154,7 @@
     .work-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 40px; padding: 40px 0; border-bottom: 1px solid var(--border); }
     .work-item:last-child { border-bottom: none; }
     @media (max-width: 700px) { .work-item { grid-template-columns: 1fr; gap: 16px; } .skills-grid { grid-template-columns: 1fr; } }
+    .work-logo { height: 40px; width: auto; max-width: 130px; object-fit: contain; border-radius: 8px; margin-bottom: 12px; display: block; }
     .work-company { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #fff; margin-bottom: 4px; }
     .work-period { font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; }
     .work-badge { display: inline-block; background: rgba(108,142,255,0.12); color: var(--accent2); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.72rem; padding: 3px 10px; border-radius: 100px; border: 1px solid rgba(108,142,255,0.2); }
@@ -310,6 +311,23 @@
   <div class="work-list">
     <div class="work-item fade-in">
       <div class="work-meta">
+        <img class="work-logo" src="assets/logos/intellias.png" alt="Intellias logo" />
+        <div class="work-company">Intellias</div>
+        <div class="work-period">Jun 2026 — <span data-i18n="present">Present</span></div>
+        <span class="work-badge" data-i18n="badge-current">Current</span>
+      </div>
+      <div class="work-content">
+        <div class="work-role" data-i18n="role-0">iOS Engineer</div>
+        <ul class="work-bullets">
+          <li data-i18n="i1">Maintain and support the iOS app for one of Ukraine's largest media providers</li>
+          <li data-i18n="i2">Build features with MVVM, Combine and RxSwift for reactive data flow, and UIKit for the interface</li>
+          <li data-i18n="i3">Collaborate closely with managers, analysts, and QA engineers to deliver the best possible user experience</li>
+        </ul>
+      </div>
+    </div>
+    <div class="work-item fade-in">
+      <div class="work-meta">
+        <img class="work-logo" src="assets/logos/natife.png" alt="Natife logo" />
         <div class="work-company">Natife</div>
         <div class="work-period">Oct 2020 — Jun 2026</div>
       </div>
@@ -330,6 +348,7 @@
     </div>
     <div class="work-item fade-in">
       <div class="work-meta">
+        <img class="work-logo" src="assets/logos/db2.png" alt="DB2 logo" />
         <div class="work-company">DB2</div>
         <div class="work-period">Nov 2019 — Oct 2020</div>
       </div>
@@ -344,6 +363,7 @@
     </div>
     <div class="work-item fade-in">
       <div class="work-meta">
+        <img class="work-logo" src="assets/logos/mindstudios.png" alt="Mind Studios logo" />
         <div class="work-company">MindStudios</div>
         <div class="work-period">Feb 2019 — Jul 2019</div>
       </div>
@@ -454,7 +474,10 @@ const i18n = {
     'sec-skills-num':'01 — Skills','sec-skills-title':'Technical expertise',
     'sec-exp-num':'02 — Experience','sec-exp-title':'Work history',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Published apps',
-    'badge-current':'Current','role-1':'iOS Engineer','role-2':'Junior iOS Developer','role-3':'Intern iOS Developer',
+    'badge-current':'Current','present':'Present','role-0':'iOS Engineer','role-1':'iOS Engineer','role-2':'Junior iOS Developer','role-3':'Intern iOS Developer',
+    'i1':'Maintain and support the iOS app for one of Ukraine\'s largest media providers',
+    'i2':'Build features with MVVM, Combine and RxSwift for reactive data flow, and UIKit for the interface',
+    'i3':'Collaborate closely with managers, analysts, and QA engineers to deliver the best possible user experience',
     'n1':'Led a cross-functional iOS team (backend, Android, design, QA), driving product decisions and technical direction across multiple products',
     'n2':'Shipped and maintained production apps with a 99.9% crash-free rate, serving thousands of active users in the US market',
     'n3':'Built UIs with SwiftUI and Swift Concurrency (async/await), keeping the main thread fully unblocked',
@@ -495,7 +518,10 @@ const i18n = {
     'sec-skills-num':'01 — Habilidades','sec-skills-title':'Experiencia técnica',
     'sec-exp-num':'02 — Experiencia','sec-exp-title':'Historial laboral',
     'sec-apps-num':'03 — Portafolio','sec-apps-title':'Apps publicadas',
-    'badge-current':'Actual','role-1':'Ingeniero iOS','role-2':'Desarrollador iOS Junior','role-3':'Desarrollador iOS Practicante',
+    'badge-current':'Actual','present':'Presente','role-0':'Ingeniero iOS','role-1':'Ingeniero iOS','role-2':'Desarrollador iOS Junior','role-3':'Desarrollador iOS Practicante',
+    'i1':'Mantengo y doy soporte a la app iOS de uno de los mayores proveedores de medios de Ucrania',
+    'i2':'Desarrollo funciones con MVVM, Combine y RxSwift para el flujo de datos reactivo, y UIKit para la interfaz',
+    'i3':'Colaboro estrechamente con gerentes, analistas e ingenieros de QA para ofrecer la mejor experiencia de usuario',
     'n1':'Lideré un equipo iOS multifuncional (backend, Android, diseño, QA), impulsando decisiones de producto y dirección técnica en múltiples productos',
     'n2':'Lancé y mantuve apps de producción con una tasa de 99.9% libre de crashes, sirviendo a miles de usuarios activos en el mercado de EE.UU.',
     'n3':'Desarrollé interfaces con SwiftUI y Swift Concurrency (async/await), manteniendo el hilo principal completamente libre',
@@ -536,7 +562,10 @@ const i18n = {
     'sec-skills-num':'01 — Fähigkeiten','sec-skills-title':'Technische Expertise',
     'sec-exp-num':'02 — Erfahrung','sec-exp-title':'Berufserfahrung',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Veröffentlichte Apps',
-    'badge-current':'Aktuell','role-1':'iOS-Entwickler','role-2':'Junior iOS-Entwickler','role-3':'iOS-Entwickler (Praktikant)',
+    'badge-current':'Aktuell','present':'Aktuell','role-0':'iOS-Entwickler','role-1':'iOS-Entwickler','role-2':'Junior iOS-Entwickler','role-3':'iOS-Entwickler (Praktikant)',
+    'i1':'Wartung und Support der iOS-App für einen der größten Medienanbieter der Ukraine',
+    'i2':'Entwicklung von Funktionen mit MVVM, Combine und RxSwift für reaktiven Datenfluss sowie UIKit für die Oberfläche',
+    'i3':'Enge Zusammenarbeit mit Managern, Analysten und QA-Ingenieuren für die bestmögliche Benutzererfahrung',
     'n1':'Leitete ein funktionsübergreifendes iOS-Team (Backend, Android, Design, QA) und trieb Produktentscheidungen und technische Ausrichtung voran',
     'n2':'Lieferte und pflegte Produktions-Apps mit 99,9% Absturzfreiheitsrate für Tausende aktiver Nutzer im US-Markt',
     'n3':'Entwickelte UIs mit SwiftUI und Swift Concurrency (async/await) und hielt den Hauptthread vollständig entlastet',
@@ -577,7 +606,10 @@ const i18n = {
     'sec-skills-num':'01 — Habilidades','sec-skills-title':'Expertise técnica',
     'sec-exp-num':'02 — Experiência','sec-exp-title':'Histórico profissional',
     'sec-apps-num':'03 — Portfólio','sec-apps-title':'Apps publicados',
-    'badge-current':'Atual','role-1':'Engenheiro iOS','role-2':'Desenvolvedor iOS Júnior','role-3':'Estagiário iOS',
+    'badge-current':'Atual','present':'Atual','role-0':'Engenheiro iOS','role-1':'Engenheiro iOS','role-2':'Desenvolvedor iOS Júnior','role-3':'Estagiário iOS',
+    'i1':'Mantenho e dou suporte ao app iOS de um dos maiores provedores de mídia da Ucrânia',
+    'i2':'Desenvolvo recursos com MVVM, Combine e RxSwift para fluxo de dados reativo, e UIKit para a interface',
+    'i3':'Colaboro de perto com gerentes, analistas e engenheiros de QA para entregar a melhor experiência do usuário',
     'n1':'Liderou uma equipe iOS multifuncional (backend, Android, design, QA), impulsionando decisões de produto e direção técnica em múltiplos produtos',
     'n2':'Lançou e manteve apps com taxa de 99,9% sem crashes, atendendo milhares de usuários ativos no mercado dos EUA',
     'n3':'Desenvolveu interfaces com SwiftUI e Swift Concurrency (async/await), mantendo a thread principal completamente livre',
@@ -618,7 +650,10 @@ const i18n = {
     'sec-skills-num':'01 — Compétences','sec-skills-title':'Expertise technique',
     'sec-exp-num':'02 — Expérience','sec-exp-title':'Parcours professionnel',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Apps publiées',
-    'badge-current':'Actuel','role-1':'Ingénieur iOS','role-2':'Développeur iOS Junior','role-3':'Développeur iOS Stagiaire',
+    'badge-current':'Actuel','present':'Actuel','role-0':'Ingénieur iOS','role-1':'Ingénieur iOS','role-2':'Développeur iOS Junior','role-3':'Développeur iOS Stagiaire',
+    'i1':'Maintien et support de l\'app iOS de l\'un des plus grands fournisseurs de médias d\'Ukraine',
+    'i2':'Développement de fonctionnalités avec MVVM, Combine et RxSwift pour le flux de données réactif, et UIKit pour l\'interface',
+    'i3':'Collaboration étroite avec les managers, analystes et ingénieurs QA pour offrir la meilleure expérience utilisateur',
     'n1':'Dirigé une équipe iOS multifonctionnelle (backend, Android, design, QA), en pilotant les décisions produit et la direction technique sur plusieurs produits',
     'n2':'Livré et maintenu des apps en production avec 99,9% sans plantage, pour des milliers d\'utilisateurs actifs sur le marché américain',
     'n3':'Développé des interfaces avec SwiftUI et Swift Concurrency (async/await), en maintenant le thread principal entièrement libre',
@@ -659,7 +694,10 @@ const i18n = {
     'sec-skills-num':'01 — Навички','sec-skills-title':'Технічна експертиза',
     'sec-exp-num':'02 — Досвід','sec-exp-title':'Досвід роботи',
     'sec-apps-num':'03 — Портфоліо','sec-apps-title':'Опубліковані застосунки',
-    'badge-current':'Зараз','role-1':'iOS Інженер','role-2':'Junior iOS Розробник','role-3':'iOS Розробник (стажер)',
+    'badge-current':'Зараз','present':'Зараз','role-0':'iOS Інженер','role-1':'iOS Інженер','role-2':'Junior iOS Розробник','role-3':'iOS Розробник (стажер)',
+    'i1':'Підтримую та супроводжую iOS-додаток для одного з найбільших медіапровайдерів України',
+    'i2':'Розробляю функціонал з використанням MVVM, Combine та RxSwift для реактивних потоків даних і UIKit для інтерфейсу',
+    'i3':'Тісно співпрацюю з менеджерами, аналітиками та тестувальниками задля найкращого користувацького досвіду',
     'n1':'Очолював міжфункціональну iOS-команду (бекенд, Android, дизайн, QA), визначаючи продуктові та технічні рішення для кількох продуктів',
     'n2':'Підтримував production-застосунки з рейтингом 99.9% crash-free для тисяч активних користувачів на ринку США',
     'n3':'Розробляв UI за допомогою SwiftUI та Swift Concurrency (async/await), повністю розвантажуючи головний потік',
@@ -700,7 +738,10 @@ const i18n = {
     'sec-skills-num':'01 — Навыки','sec-skills-title':'Техническая экспертиза',
     'sec-exp-num':'02 — Опыт','sec-exp-title':'Опыт работы',
     'sec-apps-num':'03 — Портфолио','sec-apps-title':'Опубликованные приложения',
-    'badge-current':'Сейчас','role-1':'iOS Инженер','role-2':'Junior iOS Разработчик','role-3':'iOS Разработчик (стажёр)',
+    'badge-current':'Сейчас','present':'Сейчас','role-0':'iOS Инженер','role-1':'iOS Инженер','role-2':'Junior iOS Разработчик','role-3':'iOS Разработчик (стажёр)',
+    'i1':'Поддерживаю и сопровождаю iOS-приложение для одного из крупнейших медиапровайдеров Украины',
+    'i2':'Разрабатываю функционал с использованием MVVM, Combine и RxSwift для реактивных потоков данных и UIKit для интерфейса',
+    'i3':'Тесно сотрудничаю с менеджерами, аналитиками и тестировщиками ради лучшего пользовательского опыта',
     'n1':'Руководил кросс-функциональной iOS-командой (бэкенд, Android, дизайн, QA), определяя продуктовые и технические решения для нескольких продуктов',
     'n2':'Поддерживал production-приложения с рейтингом 99.9% без сбоев для тысяч активных пользователей на рынке США',
     'n3':'Разрабатывал UI с использованием SwiftUI и Swift Concurrency (async/await), полностью разгружая главный поток',
