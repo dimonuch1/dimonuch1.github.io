@@ -177,6 +177,20 @@
     .app-btn.store { background: rgba(255,255,255,0.09); color: rgba(226,228,239,0.8); }
     .app-btn.site { background: rgba(108,142,255,0.12); color: var(--accent2); border: 1px solid rgba(108,142,255,0.2); }
 
+    /* ─── OPEN SOURCE ─── */
+    .os-card { background: var(--bg-card); border-radius: var(--radius); padding: 28px 26px; border: 1px solid var(--border); }
+    .os-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .os-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; background: rgba(108,142,255,0.12); border: 1px solid rgba(108,142,255,0.2); flex-shrink: 0; }
+    .os-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; color: #fff; line-height: 1.3; }
+    .os-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 22px; max-width: 760px; }
+    .os-shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
+    .os-shot { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--border); background: var(--bg2); transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .os-shot:hover { transform: translateY(-4px); border-color: rgba(108,142,255,0.45); box-shadow: 0 10px 30px rgba(108,142,255,0.15); }
+    .os-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .os-btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem; padding: 8px 16px; border-radius: 100px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; background: rgba(108,142,255,0.12); color: var(--accent2); border: 1px solid rgba(108,142,255,0.2); }
+    .os-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .os-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
     /* ─── FADE-IN ─── */
     .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -198,6 +212,7 @@
       <a href="#skills" data-i18n="nav-skills">Skills</a>
       <a href="#experience" data-i18n="nav-exp">Experience</a>
       <a href="#apps" data-i18n="nav-apps">Apps</a>
+      <a href="#opensource" data-i18n="nav-os">Open Source</a>
     </div>
     <div class="lang-dropdown" id="langDropdown">
       <button class="lang-trigger" id="langTrigger">
@@ -226,22 +241,30 @@
   <a href="#skills" onclick="closeMenu()" data-i18n="nav-skills">Skills</a>
   <a href="#experience" onclick="closeMenu()" data-i18n="nav-exp">Experience</a>
   <a href="#apps" onclick="closeMenu()" data-i18n="nav-apps">Apps</a>
+  <a href="#opensource" onclick="closeMenu()" data-i18n="nav-os">Open Source</a>
 </div>
 
 <div class="hero">
   <canvas id="particles-canvas"></canvas>
   <div class="hero-inner">
-    <div class="hero-tag" data-i18n="hero-tag">Available for work · Remote · Ukraine, Ivano-Frankivsk</div>
+    <div class="hero-tag" data-i18n="hero-tag">Available for work · Hourly or fixed-price · Remote · Ukraine, Ivano-Frankivsk</div>
     <h1>Dmytro<br/><span class="highlight">Koliush</span></h1>
     <div class="hero-typed-wrap"><span class="hero-typed" id="typed-text"></span></div>
     <div class="hero-role-sub" data-i18n="hero-sub">6+ years of experience</div>
-    <p class="hero-bio" data-i18n="hero-bio">iOS Engineer with a product-focused mindset, delivering business value through clean, maintainable code. Led the design and launch of a multi-product iOS suite using Clean Architecture, MVVM+C and SwiftUI, achieving a 99.9% crash-free rate and supporting thousands of active users in the US market. Built and published over 30 apps.</p>
+    <p class="hero-bio" data-i18n="hero-bio">iOS Engineer with a product-focused mindset, delivering business value through clean, maintainable code. Led the design and launch of a multi-product iOS suite using Clean Architecture, MVVM+C and SwiftUI, achieving a 99.9% crash-free rate and supporting thousands of active users in the US market. Built and published over 30 apps. I combine proven architectural patterns with AI-assisted workflows to build well-structured codebases that stay easy to maintain and extend — with or without AI.</p>
     <div class="hero-services">
       <div class="hero-service">
         <div class="hero-service-icon">🚀</div>
         <div class="hero-service-info">
           <div class="hero-service-title" data-i18n="svc-1-title">MVP from idea to App Store</div>
           <div class="hero-service-text" data-i18n="svc-1-text">Full-cycle iOS development — architecture, code, and release</div>
+        </div>
+      </div>
+      <div class="hero-service">
+        <div class="hero-service-icon">💼</div>
+        <div class="hero-service-info">
+          <div class="hero-service-title" data-i18n="svc-4-title">Hourly or fixed-price</div>
+          <div class="hero-service-text" data-i18n="svc-4-text">Hire me to build your app — hourly or at a fixed price</div>
         </div>
       </div>
       <div class="hero-service">
@@ -294,7 +317,7 @@
     <div class="skill-row fade-in"><div class="skill-icon">🍎</div><div class="skill-label">Apple Frameworks</div><div class="skill-value">CoreML, Vision, SoundAnalysis, CreateML, MapKit, CoreLocation</div></div>
     <div class="skill-row fade-in"><div class="skill-icon">🔐</div><div class="skill-label">Security</div><div class="skill-value">OAuth 2.0, biometric authentication, AES-256 encryption, iOSSecuritySuite</div></div>
     <div class="skill-row fade-in"><div class="skill-icon">💳</div><div class="skill-label">Payments</div><div class="skill-value">StoreKit, RevenueCat (subscriptions, in-app purchases)</div></div>
-    <div class="skill-row fade-in"><div class="skill-icon">🚀</div><div class="skill-label">DevOps</div><div class="skill-value">CI/CD, GitHub Actions, Fastlane, CircleCI</div></div>
+    <div class="skill-row fade-in"><div class="skill-icon">🚀</div><div class="skill-label">DevOps</div><div class="skill-value">CI/CD, GitHub Actions, CircleCI, Xcode Cloud</div></div>
     <div class="skill-row fade-in"><div class="skill-icon">🧪</div><div class="skill-label">Testing</div><div class="skill-value">Unit Testing, Snapshot Testing, A/B Testing</div></div>
     <div class="skill-row fade-in"><div class="skill-icon">🛠️</div><div class="skill-label">Tools &amp; SDKs</div><div class="skill-value">Firebase, OneSignal, AdMob, Facebook SDK</div></div>
     <div class="skill-row fade-in"><div class="skill-icon">🔀</div><div class="skill-label">Version Control</div><div class="skill-value">Git, GitFlow, Trunk-based development</div></div>
@@ -450,6 +473,32 @@
   </div>
 </div>
 
+<div class="section" id="opensource">
+  <div class="section-header fade-in">
+    <div class="section-num" data-i18n="sec-os-num">04 — Open Source</div>
+    <div class="section-title" data-i18n="sec-os-title">Open source projects</div>
+  </div>
+  <div class="os-card fade-in">
+    <div class="os-head">
+      <div class="os-icon">📺</div>
+      <div class="os-name">TV-time</div>
+    </div>
+    <div class="os-desc" data-i18n="os-tvtime">A companion app for tracking TV series and movies — search titles, follow what you watch, and keep tabs on your progress across shows and episodes. Built with Clean Architecture and MVVM+C on UIKit and Combine, and developed with AI-assisted skills for a well-structured, easily extensible codebase that stays fully maintainable with or without AI.</div>
+    <div class="os-shots">
+      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/discover.PNG" alt="TV-time — Discover" />
+      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series.PNG" alt="TV-time — My Series" />
+      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series_details.PNG" alt="TV-time — Show details" />
+      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/seasons.PNG" alt="TV-time — Episode progress" />
+    </div>
+    <div class="os-actions">
+      <a href="https://github.com/dimonuch1/TV-time" class="os-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span data-i18n="os-github">View on GitHub</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <footer>
   © <span id="year"></span> Dmytro Koliush · dimonuch1@gmail.com
 
@@ -463,17 +512,19 @@ const langMeta = {
 
 const i18n = {
   en: {
-    'nav-home':'Home','nav-skills':'Skills','nav-exp':'Experience','nav-apps':'Apps',
-    'hero-tag':'Available for work · Remote · Ukraine, Ivano-Frankivsk',
+    'nav-home':'Home','nav-skills':'Skills','nav-exp':'Experience','nav-apps':'Apps','nav-os':'Open Source',
+    'hero-tag':'Available for work · Hourly or fixed-price · Remote · Ukraine, Ivano-Frankivsk',
     'typed-word':'iOS Engineer','hero-sub':'6+ years of experience',
-    'hero-bio':'iOS Engineer with a product-focused mindset, delivering business value through clean, maintainable code. Led the design and launch of a multi-product iOS suite using Clean Architecture, MVVM+C and SwiftUI, achieving a 99.9% crash-free rate and supporting thousands of active users in the US market. Built and published over 30 apps.',
+    'hero-bio':'iOS Engineer with a product-focused mindset, delivering business value through clean, maintainable code. Led the design and launch of a multi-product iOS suite using Clean Architecture, MVVM+C and SwiftUI, achieving a 99.9% crash-free rate and supporting thousands of active users in the US market. Built and published over 30 apps. I combine proven architectural patterns with AI-assisted workflows to build well-structured codebases that stay easy to maintain and extend — with or without AI.',
     'svc-1-title':'MVP from idea to App Store','svc-1-text':'Full-cycle iOS development — architecture, code, and release',
+    'svc-4-title':'Hourly or fixed-price','svc-4-text':'Hire me to build your app — hourly or at a fixed price',
     'svc-2-title':'App support & maintenance','svc-2-text':'Bug fixes, updates, and performance improvements',
     'svc-3-title':'Ready to join your team','svc-3-text':'Available for full-time or contract iOS roles',
     'find-me':'Find me on',
     'sec-skills-num':'01 — Skills','sec-skills-title':'Technical expertise',
     'sec-exp-num':'02 — Experience','sec-exp-title':'Work history',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Published apps',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Open source projects','os-tvtime':'A companion app for tracking TV series and movies — search titles, follow what you watch, and keep tabs on your progress across shows and episodes. Built with Clean Architecture and MVVM+C on UIKit and Combine, and developed with AI-assisted skills for a well-structured, easily extensible codebase that stays fully maintainable with or without AI.','os-github':'View on GitHub',
     'badge-current':'Current','present':'Present','role-0':'iOS Engineer','role-1':'iOS Engineer','role-2':'Junior iOS Developer','role-3':'Intern iOS Developer',
     'i1':'Maintain and support the iOS app for one of Ukraine\'s largest media providers',
     'i2':'Build features with MVVM, Combine and RxSwift for reactive data flow, and UIKit for the interface',
@@ -507,17 +558,19 @@ const i18n = {
     'app-getskins':'Browse, collect and showcase CS:GO skins — your virtual inventory of iconic weapon finishes.',
   },
   es: {
-    'nav-home':'Inicio','nav-skills':'Habilidades','nav-exp':'Experiencia','nav-apps':'Apps',
-    'hero-tag':'Disponible para trabajar · Remoto · Ucrania, Ivano-Frankivsk',
+    'nav-home':'Inicio','nav-skills':'Habilidades','nav-exp':'Experiencia','nav-apps':'Apps','nav-os':'Código abierto',
+    'hero-tag':'Disponible para trabajar · Por hora o precio fijo · Remoto · Ucrania, Ivano-Frankivsk',
     'typed-word':'iOS Engineer','hero-sub':'6+ años de experiencia',
-    'hero-bio':'Ingeniero iOS con mentalidad orientada al producto, generando valor de negocio a través de código limpio y mantenible. Lideré el diseño y lanzamiento de una suite iOS multiproducto usando Clean Architecture, MVVM+C y SwiftUI, logrando un 99.9% libre de crashes y sirviendo a miles de usuarios activos en el mercado de EE.UU. Desarrollé y publiqué más de 30 apps.',
+    'hero-bio':'Ingeniero iOS con mentalidad orientada al producto, generando valor de negocio a través de código limpio y mantenible. Lideré el diseño y lanzamiento de una suite iOS multiproducto usando Clean Architecture, MVVM+C y SwiftUI, logrando un 99.9% libre de crashes y sirviendo a miles de usuarios activos en el mercado de EE.UU. Desarrollé y publiqué más de 30 apps. Combino patrones de arquitectura probados con flujos de trabajo asistidos por IA para crear bases de código bien estructuradas que siguen siendo fáciles de mantener y ampliar, con o sin IA.',
     'svc-1-title':'MVP de la idea al App Store','svc-1-text':'Desarrollo iOS completo — arquitectura, código y lanzamiento',
+    'svc-4-title':'Por hora o precio fijo','svc-4-text':'Contrátame para desarrollar tu app — por hora o a precio fijo',
     'svc-2-title':'Soporte y mantenimiento de apps','svc-2-text':'Corrección de errores, actualizaciones y mejoras de rendimiento',
     'svc-3-title':'Listo para unirme a tu equipo','svc-3-text':'Disponible para roles iOS a tiempo completo o por contrato',
     'find-me':'Encuéntrame en',
     'sec-skills-num':'01 — Habilidades','sec-skills-title':'Experiencia técnica',
     'sec-exp-num':'02 — Experiencia','sec-exp-title':'Historial laboral',
     'sec-apps-num':'03 — Portafolio','sec-apps-title':'Apps publicadas',
+    'sec-os-num':'04 — Código abierto','sec-os-title':'Proyectos de código abierto','os-tvtime':'Una app para seguir series y películas: busca títulos, registra lo que ves y controla tu progreso a lo largo de temporadas y episodios. Construida con Clean Architecture y MVVM+C sobre UIKit y Combine, y desarrollada con skills asistidos por IA para una base de código bien estructurada y fácilmente ampliable, que se mantiene plenamente con o sin IA.','os-github':'Ver en GitHub',
     'badge-current':'Actual','present':'Presente','role-0':'Ingeniero iOS','role-1':'Ingeniero iOS','role-2':'Desarrollador iOS Junior','role-3':'Desarrollador iOS Practicante',
     'i1':'Mantengo y doy soporte a la app iOS de uno de los mayores proveedores de medios de Ucrania',
     'i2':'Desarrollo funciones con MVVM, Combine y RxSwift para el flujo de datos reactivo, y UIKit para la interfaz',
@@ -551,17 +604,19 @@ const i18n = {
     'app-getskins':'Navega, colecciona y muestra skins de CS:GO — tu inventario virtual de acabados icónicos.',
   },
   de: {
-    'nav-home':'Start','nav-skills':'Fähigkeiten','nav-exp':'Erfahrung','nav-apps':'Apps',
-    'hero-tag':'Verfügbar für Arbeit · Remote · Ukraine, Iwano-Frankiwsk',
+    'nav-home':'Start','nav-skills':'Fähigkeiten','nav-exp':'Erfahrung','nav-apps':'Apps','nav-os':'Open Source',
+    'hero-tag':'Verfügbar für Arbeit · Stundenbasis oder Festpreis · Remote · Ukraine, Iwano-Frankiwsk',
     'typed-word':'iOS Engineer','hero-sub':'6+ Jahre Erfahrung',
-    'hero-bio':'iOS-Entwickler mit produktorientierten Denkweise, der durch sauberen, wartbaren Code Geschäftswert schafft. Leitete Design und Launch einer Multi-Produkt-iOS-Suite mit Clean Architecture, MVVM+C und SwiftUI – 99,9% Absturzfreiheitsrate, Tausende aktiver Nutzer im US-Markt. Über 30 Apps entwickelt und veröffentlicht.',
+    'hero-bio':'iOS-Entwickler mit produktorientierten Denkweise, der durch sauberen, wartbaren Code Geschäftswert schafft. Leitete Design und Launch einer Multi-Produkt-iOS-Suite mit Clean Architecture, MVVM+C und SwiftUI – 99,9% Absturzfreiheitsrate, Tausende aktiver Nutzer im US-Markt. Über 30 Apps entwickelt und veröffentlicht. Ich verbinde bewährte Architekturmuster mit KI-gestützten Workflows, um gut strukturierte Codebasen zu erstellen, die mit oder ohne KI leicht wartbar und erweiterbar bleiben.',
     'svc-1-title':'MVP von der Idee zum App Store','svc-1-text':'Vollständige iOS-Entwicklung — Architektur, Code und Release',
+    'svc-4-title':'Stundenbasis oder Festpreis','svc-4-text':'Beauftragen Sie mich mit Ihrer App — stundenweise oder zum Festpreis',
     'svc-2-title':'App-Support & Wartung','svc-2-text':'Fehlerbehebung, Updates und Leistungsverbesserungen',
     'svc-3-title':'Bereit, Ihrem Team beizutreten','svc-3-text':'Verfügbar für Vollzeit- oder Vertragsstellen im iOS-Bereich',
     'find-me':'Finde mich auf',
     'sec-skills-num':'01 — Fähigkeiten','sec-skills-title':'Technische Expertise',
     'sec-exp-num':'02 — Erfahrung','sec-exp-title':'Berufserfahrung',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Veröffentlichte Apps',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Open-Source-Projekte','os-tvtime':'Eine Begleit-App zum Verfolgen von Serien und Filmen — Titel suchen, Gesehenes festhalten und den Fortschritt über Staffeln und Episoden im Blick behalten. Entwickelt mit Clean Architecture und MVVM+C auf UIKit und Combine sowie mit KI-gestützten Skills für eine gut strukturierte, leicht erweiterbare Codebasis, die mit oder ohne KI voll wartbar bleibt.','os-github':'Auf GitHub ansehen',
     'badge-current':'Aktuell','present':'Aktuell','role-0':'iOS-Entwickler','role-1':'iOS-Entwickler','role-2':'Junior iOS-Entwickler','role-3':'iOS-Entwickler (Praktikant)',
     'i1':'Wartung und Support der iOS-App für einen der größten Medienanbieter der Ukraine',
     'i2':'Entwicklung von Funktionen mit MVVM, Combine und RxSwift für reaktiven Datenfluss sowie UIKit für die Oberfläche',
@@ -595,17 +650,19 @@ const i18n = {
     'app-getskins':'CS:GO-Skins durchsuchen, sammeln und präsentieren — dein virtuelles Inventar ikonischer Waffenlackierungen.',
   },
   pt: {
-    'nav-home':'Início','nav-skills':'Habilidades','nav-exp':'Experiência','nav-apps':'Apps',
-    'hero-tag':'Disponível para trabalho · Remoto · Ucrânia, Ivano-Frankivsk',
+    'nav-home':'Início','nav-skills':'Habilidades','nav-exp':'Experiência','nav-apps':'Apps','nav-os':'Código aberto',
+    'hero-tag':'Disponível para trabalho · Por hora ou preço fixo · Remoto · Ucrânia, Ivano-Frankivsk',
     'typed-word':'iOS Engineer','hero-sub':'6+ anos de experiência',
-    'hero-bio':'Engenheiro iOS com mentalidade orientada ao produto, entregando valor de negócio através de código limpo e manutenível. Liderou o design e lançamento de uma suite iOS com Clean Architecture, MVVM+C e SwiftUI, alcançando 99,9% de taxa livre de crashes para milhares de usuários ativos nos EUA. Desenvolveu e publicou mais de 30 apps.',
+    'hero-bio':'Engenheiro iOS com mentalidade orientada ao produto, entregando valor de negócio através de código limpo e manutenível. Liderou o design e lançamento de uma suite iOS com Clean Architecture, MVVM+C e SwiftUI, alcançando 99,9% de taxa livre de crashes para milhares de usuários ativos nos EUA. Desenvolveu e publicou mais de 30 apps. Combino padrões de arquitetura comprovados com fluxos de trabalho assistidos por IA para criar bases de código bem estruturadas que permanecem fáceis de manter e expandir, com ou sem IA.',
     'svc-1-title':'MVP da ideia ao App Store','svc-1-text':'Desenvolvimento iOS completo — arquitetura, código e lançamento',
+    'svc-4-title':'Por hora ou preço fixo','svc-4-text':'Contrate-me para desenvolver a sua app — por hora ou a preço fixo',
     'svc-2-title':'Suporte e manutenção de apps','svc-2-text':'Correção de bugs, atualizações e melhorias de desempenho',
     'svc-3-title':'Pronto para entrar na sua equipe','svc-3-text':'Disponível para funções iOS em tempo integral ou contrato',
     'find-me':'Encontre-me em',
     'sec-skills-num':'01 — Habilidades','sec-skills-title':'Expertise técnica',
     'sec-exp-num':'02 — Experiência','sec-exp-title':'Histórico profissional',
     'sec-apps-num':'03 — Portfólio','sec-apps-title':'Apps publicados',
+    'sec-os-num':'04 — Código aberto','sec-os-title':'Projetos de código aberto','os-tvtime':'Uma app para acompanhar séries e filmes — pesquise títulos, registe o que vê e acompanhe o seu progresso ao longo de temporadas e episódios. Construída com Clean Architecture e MVVM+C sobre UIKit e Combine, e desenvolvida com skills assistidos por IA para uma base de código bem estruturada e facilmente expansível, que se mantém totalmente com ou sem IA.','os-github':'Ver no GitHub',
     'badge-current':'Atual','present':'Atual','role-0':'Engenheiro iOS','role-1':'Engenheiro iOS','role-2':'Desenvolvedor iOS Júnior','role-3':'Estagiário iOS',
     'i1':'Mantenho e dou suporte ao app iOS de um dos maiores provedores de mídia da Ucrânia',
     'i2':'Desenvolvo recursos com MVVM, Combine e RxSwift para fluxo de dados reativo, e UIKit para a interface',
@@ -639,17 +696,19 @@ const i18n = {
     'app-getskins':'Navegue, colecione e exiba skins de CS:GO — seu inventário virtual de acabamentos icônicos.',
   },
   fr: {
-    'nav-home':'Accueil','nav-skills':'Compétences','nav-exp':'Expérience','nav-apps':'Apps',
-    'hero-tag':'Disponible pour travailler · À distance · Ukraine, Ivano-Frankivsk',
+    'nav-home':'Accueil','nav-skills':'Compétences','nav-exp':'Expérience','nav-apps':'Apps','nav-os':'Open Source',
+    'hero-tag':'Disponible pour travailler · À l\'heure ou au forfait · À distance · Ukraine, Ivano-Frankivsk',
     'typed-word':'iOS Engineer','hero-sub':'6+ ans d\'expérience',
-    'hero-bio':'Ingénieur iOS avec une vision orientée produit, créant de la valeur business grâce à un code propre et maintenable. A dirigé la conception et le lancement d\'une suite iOS multi-produits avec Clean Architecture, MVVM+C et SwiftUI, atteignant 99,9% sans plantage pour des milliers d\'utilisateurs actifs sur le marché américain. Plus de 30 apps développées et publiées.',
+    'hero-bio':'Ingénieur iOS avec une vision orientée produit, créant de la valeur business grâce à un code propre et maintenable. A dirigé la conception et le lancement d\'une suite iOS multi-produits avec Clean Architecture, MVVM+C et SwiftUI, atteignant 99,9% sans plantage pour des milliers d\'utilisateurs actifs sur le marché américain. Plus de 30 apps développées et publiées. Je combine des patterns d\'architecture éprouvés avec des workflows assistés par IA pour créer des bases de code bien structurées qui restent faciles à maintenir et à faire évoluer, avec ou sans IA.',
     'svc-1-title':'MVP de l\'idée à l\'App Store','svc-1-text':'Développement iOS complet — architecture, code et lancement',
+    'svc-4-title':'À l\'heure ou au forfait','svc-4-text':'Confiez-moi le développement de votre app — à l\'heure ou au forfait',
     'svc-2-title':'Support et maintenance d\'apps','svc-2-text':'Correction de bugs, mises à jour et améliorations de performance',
     'svc-3-title':'Prêt à rejoindre votre équipe','svc-3-text':'Disponible pour des rôles iOS à temps plein ou en contrat',
     'find-me':'Me retrouver sur',
     'sec-skills-num':'01 — Compétences','sec-skills-title':'Expertise technique',
     'sec-exp-num':'02 — Expérience','sec-exp-title':'Parcours professionnel',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Apps publiées',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Projets open source','os-tvtime':'Une application pour suivre séries et films — recherchez des titres, notez ce que vous regardez et suivez votre progression au fil des saisons et des épisodes. Conçue avec Clean Architecture et MVVM+C sur UIKit et Combine, et développée avec des skills assistés par IA pour une base de code bien structurée et facilement extensible, qui reste pleinement maintenable, avec ou sans IA.','os-github':'Voir sur GitHub',
     'badge-current':'Actuel','present':'Actuel','role-0':'Ingénieur iOS','role-1':'Ingénieur iOS','role-2':'Développeur iOS Junior','role-3':'Développeur iOS Stagiaire',
     'i1':'Maintien et support de l\'app iOS de l\'un des plus grands fournisseurs de médias d\'Ukraine',
     'i2':'Développement de fonctionnalités avec MVVM, Combine et RxSwift pour le flux de données réactif, et UIKit pour l\'interface',
@@ -683,17 +742,19 @@ const i18n = {
     'app-getskins':'Parcourez, collectionnez et exposez des skins CS:GO — votre inventaire virtuel de finitions d\'armes emblématiques.',
   },
   ua: {
-    'nav-home':'Головна','nav-skills':'Навички','nav-exp':'Досвід','nav-apps':'Застосунки',
-    'hero-tag':'Доступний для роботи · Віддалено · Україна, Івано-Франківськ',
+    'nav-home':'Головна','nav-skills':'Навички','nav-exp':'Досвід','nav-apps':'Застосунки','nav-os':'Open Source',
+    'hero-tag':'Доступний для роботи · Погодинно або фікс. ціна · Віддалено · Україна, Івано-Франківськ',
     'typed-word':'iOS Engineer','hero-sub':'6+ років досвіду',
-    'hero-bio':'iOS-розробник з продуктовим мисленням, що створює цінність для бізнесу через чистий та підтримуваний код. Очолював розробку iOS-продуктів на базі Clean Architecture, MVVM+C та SwiftUI, досягнувши 99.9% crash-free rate для тисяч активних користувачів на ринку США. Опублікував понад 30 застосунків.',
+    'hero-bio':'iOS-розробник з продуктовим мисленням, що створює цінність для бізнесу через чистий та підтримуваний код. Очолював розробку iOS-продуктів на базі Clean Architecture, MVVM+C та SwiftUI, досягнувши 99.9% crash-free rate для тисяч активних користувачів на ринку США. Опублікував понад 30 застосунків. Поєдную перевірені архітектурні патерни з AI-асистованими процесами розробки, створюючи добре структурований код, який лишається легким у підтримці та розширенні — з AI або без нього.',
     'svc-1-title':'MVP від ідеї до App Store','svc-1-text':'Повний цикл розробки — архітектура, код і реліз',
+    'svc-4-title':'Погодинно або фіксована ціна','svc-4-text':'Візьму ваш застосунок у розробку — погодинно або за фіксованою ціною',
     'svc-2-title':'Підтримка та розвиток застосунку','svc-2-text':'Виправлення помилок, оновлення та покращення продуктивності',
     'svc-3-title':'Готовий приєднатись до команди','svc-3-text':'Доступний для повної зайнятості або контракту',
     'find-me':'Знайти мене',
     'sec-skills-num':'01 — Навички','sec-skills-title':'Технічна експертиза',
     'sec-exp-num':'02 — Досвід','sec-exp-title':'Досвід роботи',
     'sec-apps-num':'03 — Портфоліо','sec-apps-title':'Опубліковані застосунки',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Проєкти з відкритим кодом','os-tvtime':'Застосунок для відстеження серіалів і фільмів — пошук тайтлів, ведення списку переглянутого та контроль прогресу за сезонами й епізодами. Побудований на Clean Architecture та MVVM+C з UIKit і Combine, розроблений із застосуванням AI-скілів для добре структурованого та легко розширюваного коду, який повністю підтримується — з AI або без нього.','os-github':'Переглянути на GitHub',
     'badge-current':'Зараз','present':'Зараз','role-0':'iOS Інженер','role-1':'iOS Інженер','role-2':'Junior iOS Розробник','role-3':'iOS Розробник (стажер)',
     'i1':'Підтримую та супроводжую iOS-додаток для одного з найбільших медіапровайдерів України',
     'i2':'Розробляю функціонал з використанням MVVM, Combine та RxSwift для реактивних потоків даних і UIKit для інтерфейсу',
@@ -727,17 +788,19 @@ const i18n = {
     'app-getskins':'Переглядай, збирай та демонструй скіни CS:GO — твій віртуальний інвентар культових зброй.',
   },
   ru: {
-    'nav-home':'Главная','nav-skills':'Навыки','nav-exp':'Опыт','nav-apps':'Приложения',
-    'hero-tag':'Доступен для работы · Удалённо · Украина, Ивано-Франковск',
+    'nav-home':'Главная','nav-skills':'Навыки','nav-exp':'Опыт','nav-apps':'Приложения','nav-os':'Open Source',
+    'hero-tag':'Доступен для работы · Почасово или фикс. цена · Удалённо · Украина, Ивано-Франковск',
     'typed-word':'iOS Engineer','hero-sub':'6+ лет опыта',
-    'hero-bio':'iOS-разработчик с продуктовым мышлением, создающий ценность для бизнеса через чистый и поддерживаемый код. Руководил разработкой iOS-продуктов на базе Clean Architecture, MVVM+C и SwiftUI, достигнув 99.9% без сбоев для тысяч активных пользователей на рынке США. Разработал и опубликовал более 30 приложений.',
+    'hero-bio':'iOS-разработчик с продуктовым мышлением, создающий ценность для бизнеса через чистый и поддерживаемый код. Руководил разработкой iOS-продуктов на базе Clean Architecture, MVVM+C и SwiftUI, достигнув 99.9% без сбоев для тысяч активных пользователей на рынке США. Разработал и опубликовал более 30 приложений. Совмещаю проверенные архитектурные паттерны с AI-ассистированными процессами разработки, создавая хорошо структурированный код, который остаётся простым в поддержке и расширении — с AI или без него.',
     'svc-1-title':'MVP от идеи до App Store','svc-1-text':'Полный цикл разработки — архитектура, код и релиз',
+    'svc-4-title':'Почасово или фикс. цена','svc-4-text':'Возьму ваше приложение в разработку — почасово или по фиксированной цене',
     'svc-2-title':'Поддержка и развитие приложения','svc-2-text':'Исправление ошибок, обновления и улучшение производительности',
     'svc-3-title':'Готов присоединиться к команде','svc-3-text':'Доступен для полной занятости или контракта',
     'find-me':'Найти меня',
     'sec-skills-num':'01 — Навыки','sec-skills-title':'Техническая экспертиза',
     'sec-exp-num':'02 — Опыт','sec-exp-title':'Опыт работы',
     'sec-apps-num':'03 — Портфолио','sec-apps-title':'Опубликованные приложения',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Проекты с открытым кодом','os-tvtime':'Приложение для отслеживания сериалов и фильмов — поиск тайтлов, ведение списка просмотренного и контроль прогресса по сезонам и эпизодам. Построено на Clean Architecture и MVVM+C с UIKit и Combine, разработано с применением AI-скилов для хорошо структурированного и легко расширяемого кода, который полностью поддерживается — с AI или без него.','os-github':'Открыть на GitHub',
     'badge-current':'Сейчас','present':'Сейчас','role-0':'iOS Инженер','role-1':'iOS Инженер','role-2':'Junior iOS Разработчик','role-3':'iOS Разработчик (стажёр)',
     'i1':'Поддерживаю и сопровождаю iOS-приложение для одного из крупнейших медиапровайдеров Украины',
     'i2':'Разрабатываю функционал с использованием MVVM, Combine и RxSwift для реактивных потоков данных и UIKit для интерфейса',
@@ -860,19 +923,42 @@ if (currentLang !== 'en') setLang(currentLang);
 
 // ── Fade-in on scroll ──
 (function() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
-        let delay = 0;
-        siblings.forEach((el,i) => { if(el===entry.target) delay=i*60; });
-        entry.target.style.transitionDelay = Math.min(delay,300)+'ms';
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
+  let ioFired = false;
+  function reveal(el) { el.classList.add('visible'); }
+  function revealInView() {
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) reveal(el);
     });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  }
+
+  // Scroll-triggered fade animation in capable browsers.
+  let obs = null;
+  try {
+    obs = new IntersectionObserver(entries => {
+      ioFired = true;
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
+          let delay = 0;
+          siblings.forEach((el,i) => { if(el===entry.target) delay=i*60; });
+          entry.target.style.transitionDelay = Math.min(delay,300)+'ms';
+          reveal(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  } catch (e) { /* IntersectionObserver unsupported — fallbacks below handle it */ }
+
+  // Fallbacks so content is NEVER stuck hidden (old browsers, in-app webviews,
+  // reduced-motion, etc.). Reveal in-view content early and on scroll...
+  revealInView();
+  setTimeout(revealInView, 300);
+  window.addEventListener('load', revealInView);
+  window.addEventListener('scroll', revealInView, { passive: true });
+  // ...and as a last resort, if the observer never fired at all, show everything.
+  setTimeout(() => { if (!ioFired) document.querySelectorAll('.fade-in').forEach(reveal); }, 1200);
 })();
 
 </script>
