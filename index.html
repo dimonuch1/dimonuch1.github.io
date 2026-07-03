@@ -186,6 +186,7 @@
     .os-card { background: var(--bg-card); border-radius: var(--radius); padding: 28px 26px; border: 1px solid var(--border); }
     .os-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
     .os-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; background: rgba(108,142,255,0.12); border: 1px solid rgba(108,142,255,0.2); flex-shrink: 0; }
+    .os-icon-img { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
     .os-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; color: #fff; line-height: 1.3; }
     .os-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 22px; max-width: 760px; }
     .os-shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
@@ -485,15 +486,15 @@
   </div>
   <div class="os-card fade-in">
     <div class="os-head">
-      <div class="os-icon">📺</div>
-      <div class="os-name">TV-time</div>
+      <img class="os-icon-img" src="assets/icons/tv_vibe.jpg" alt="TV Vibe" />
+      <div class="os-name">TV Vibe</div>
     </div>
     <div class="os-desc" data-i18n="os-tvtime">A companion app for tracking TV series and movies — search titles, follow what you watch, and keep tabs on your progress across shows and episodes. Built with Clean Architecture and MVVM+C on UIKit and Combine, and developed with AI-assisted skills for a well-structured, easily extensible codebase that stays fully maintainable with or without AI.</div>
     <div class="os-shots">
-      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/discover.PNG" alt="TV-time — Discover" />
-      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series.PNG" alt="TV-time — My Series" />
-      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series_details.PNG" alt="TV-time — Show details" />
-      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/seasons.PNG" alt="TV-time — Episode progress" />
+      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/discover.PNG" alt="TV Vibe — Discover" />
+      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series.PNG" alt="TV Vibe — My Series" />
+      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series_details.PNG" alt="TV Vibe — Show details" />
+      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/seasons.PNG" alt="TV Vibe — Episode progress" />
     </div>
     <div class="os-actions">
       <a href="https://github.com/dimonuch1/TV-time" class="os-btn" target="_blank" rel="noopener">
