@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Vibe: TV &amp; Movie Tracker — Support</title>
+  <meta name="description" content="TV Vibe is a TV show and movie tracker. Track episodes and seasons, build your watchlist, discover trending titles, and find where to stream." />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #FF7A1A;
+      --orange-dark: #c9590a;
+      --orange-light: rgba(255,122,26,0.12);
+      --bg: #0d0f14;
+      --bg-card: #161920;
+      --border: rgba(255,122,26,0.18);
+      --radius: 20px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #e0e2ea; overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,20,0.93); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-logo img { width: 28px; height: 28px; border-radius: 8px; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: rgba(224,226,234,0.55); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+
+    .hero {
+      padding: 120px 5% 70px; text-align: center; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse 80% 55% at 50% 30%, rgba(255,122,26,0.13) 0%, transparent 70%);
+    }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,122,26,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,122,26,0.07) 1px, transparent 1px); background-size: 48px 48px; }
+    .hero-content { position: relative; max-width: 660px; margin: 0 auto; }
+    .hero-icon { display: block; width: 88px; height: 88px; border-radius: 22px; margin: 0 auto 22px; box-shadow: 0 8px 30px rgba(255,122,26,0.35); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; line-height: 1; background: var(--orange-light); color: var(--orange); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: 100px; border: 1px solid rgba(255,122,26,0.3); margin-bottom: 22px; }
+    .hero h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; color: #fff; margin-bottom: 18px; }
+    .hero h1 em { color: var(--orange); font-style: normal; }
+    .hero p { font-size: 1.05rem; color: rgba(224,226,234,0.65); line-height: 1.7; max-width: 520px; margin: 0 auto; }
+    .hero-actions { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-note { margin-top: 28px; display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px 18px; font-size: 0.82rem; color: rgba(224,226,234,0.55); }
+
+    .features { padding: 70px 5%; max-width: 900px; margin: 0 auto; }
+    .section-label { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .section-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.2rem); color: #fff; margin-bottom: 36px; line-height: 1.2; }
+    .features-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 60px; }
+    @media (max-width: 700px) { .features-grid { grid-template-columns: 1fr; } }
+    .feature-card { background: var(--bg-card); border-radius: var(--radius); padding: 28px 24px; border: 1.5px solid var(--border); }
+    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+    .feature-card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 8px; }
+    .feature-card p { color: rgba(224,226,234,0.6); font-size: 0.88rem; line-height: 1.6; }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,122,26,0.4), transparent); margin: 0 5%; opacity: 0.6; }
+
+    .section { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
+
+    .shots-scroll { display: flex; gap: 20px; overflow-x: auto; padding: 6px 2px 20px; scrollbar-width: thin; }
+    .shots-scroll img { height: 420px; border-radius: 22px; border: 1.5px solid var(--border); flex-shrink: 0; box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
+    @media (max-width: 700px) { .shots-scroll img { height: 320px; } }
+
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } }
+    .card { background: var(--bg-card); border-radius: var(--radius); padding: 32px 28px; border: 1.5px solid var(--border); }
+    .card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 10px; }
+    .card p { color: rgba(224,226,234,0.6); font-size: 0.93rem; line-height: 1.65; margin-bottom: 20px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem; padding: 12px 24px; border-radius: 100px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .btn:hover { background: var(--orange-dark); transform: translateY(-1px); }
+    .btn.outline { background: transparent; color: var(--orange); border: 2px solid rgba(255,122,26,0.5); }
+    .btn.outline:hover { background: var(--orange-light); }
+
+    .faq-card { background: var(--bg-card); border-radius: var(--radius); padding: 32px 28px; border: 1.5px solid var(--border); }
+    .faq-item { border-bottom: 1px solid rgba(255,122,26,0.1); padding: 18px 0; }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-item h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: #fff; margin-bottom: 6px; }
+    .faq-item p { color: rgba(224,226,234,0.6); font-size: 0.88rem; line-height: 1.6; }
+
+    footer { background: #08090d; color: rgba(224,226,234,0.45); padding: 40px 5%; text-align: center; border-top: 1px solid var(--border); }
+    .footer-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.3rem; color: #fff; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .footer-logo img { width: 24px; height: 24px; border-radius: 6px; }
+    .footer-logo span { color: var(--orange); }
+    footer p { font-size: 0.85rem; margin-bottom: 16px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(224,226,234,0.4); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="../assets/icons/tv_vibe.jpg" alt="TV Vibe icon" />TV <span>Vibe</span></a>
+  <div class="nav-links">
+    <a href="#contact">Contact</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <img class="hero-icon" src="../assets/icons/tv_vibe.jpg" alt="TV Vibe app icon" />
+    <div class="hero-badge">📺 Episode Tracker &amp; Watchlist</div>
+    <h1>Track Every Show.<br/><em>Never Lose Your Place.</em></h1>
+    <p>TV Vibe helps you organize what you watch — track episodes and seasons, build your watchlist, discover trending titles, and find where to stream.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/dimonuch1/TV-time" class="btn" target="_blank" rel="noopener">View on GitHub ↗</a>
+      <a href="#faq" class="btn outline">Learn More</a>
+    </div>
+    <div class="hero-note">ℹ️ Note: TV Vibe does not stream movies or TV shows — it's a tracker to help you organize what you watch.</div>
+  </div>
+</section>
+
+<div class="features">
+  <div class="section-label">What's inside</div>
+  <div class="section-title">Everything you need to stay organized</div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>Episode &amp; Season Tracking</h3>
+      <p>Mark individual episodes or full seasons as watched with one tap, and track your progress across every season.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h3>Watching, Watch Later, Watched</h3>
+      <p>Keep separate lists for what you're watching, what's next, and what you've finished — resume exactly where you left off.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Discover Trending Titles</h3>
+      <p>Browse trending and popular movies and TV shows, updated daily, with genres, ratings, and release years.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <h3>Instant Search</h3>
+      <p>Search any TV show or movie instantly and find where to watch it on Netflix, Prime Video, HBO, Disney+ and more.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <h3>Upcoming Releases</h3>
+      <p>Follow upcoming seasons and premiere dates so you never miss the next episode of your favorite shows.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎬</div>
+      <h3>Collections &amp; Franchises</h3>
+      <p>Explore full movie collections and franchises, with cast, ratings, and vote counts for every title.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="section" id="screenshots">
+  <div class="section-label">See it in action</div>
+  <div class="section-title">A closer look at TV Vibe</div>
+  <div class="shots-scroll">
+    <img src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/discover.PNG" alt="TV Vibe — Discover trending feed" loading="lazy" />
+    <img src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series.PNG" alt="TV Vibe — Watching and Watch Later lists" loading="lazy" />
+    <img src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series_details.PNG" alt="TV Vibe — Show details" loading="lazy" />
+    <img src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/seasons.PNG" alt="TV Vibe — Episode watch progress" loading="lazy" />
+    <img src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/movies_details.png" alt="TV Vibe — Movie details" loading="lazy" />
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="contact">
+  <div class="section-label">Get in touch</div>
+  <div class="section-title">Contact &amp; Legal</div>
+  <div class="cards-grid">
+    <div class="card">
+      <h3>📧 Contact Support</h3>
+      <p>Having trouble with the app or have a question? Send us an email and we'll respond within 24–48 hours.</p>
+      <a href="mailto:aicaloriescounter@gmail.com" class="btn">Send Email</a>
+    </div>
+    <div class="card">
+      <h3>📋 Terms of Use (EULA)</h3>
+      <p>TV Vibe uses the standard Apple End User License Agreement for all users.</p>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" class="btn outline" target="_blank" rel="noopener">View Terms of Use ↗</a>
+    </div>
+    <div class="card">
+      <h3>🔒 Privacy Policy</h3>
+      <p>Learn how TV Vibe collects, uses, and protects your personal data.</p>
+      <a href="privacy.html" class="btn outline">View Privacy Policy ↗</a>
+    </div>
+    <div class="card">
+      <h3>💻 Source Code</h3>
+      <p>TV Vibe is built in the open — browse the source, architecture notes, and roadmap on GitHub.</p>
+      <a href="https://github.com/dimonuch1/TV-time" class="btn outline" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="faq">
+  <div class="section-label">FAQ</div>
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-card">
+    <div class="faq-item">
+      <h4>Does TV Vibe stream movies or TV shows?</h4>
+      <p>No. TV Vibe does not stream any content — it's a tracker that helps you organize what you watch and find where it's available to stream.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Where does the show and movie data come from?</h4>
+      <p>TV Vibe is powered by TMDB, giving you accurate, frequently updated ratings, cast info, and streaming availability.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I track individual episodes?</h4>
+      <p>Yes. You can mark single episodes or entire seasons as watched, and your progress is tracked automatically across every show.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Do I need an account to use TV Vibe?</h4>
+      <p>An account keeps your watchlist and progress backed up and synced. You can sign in with Apple, Google, or an email and password.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Still need help?</h4>
+      <p>Email us at <a href="mailto:aicaloriescounter@gmail.com" style="color: var(--orange); font-weight: 600;">aicaloriescounter@gmail.com</a> and we'll get back to you quickly.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="../assets/icons/tv_vibe.jpg" alt="TV Vibe icon" />TV <span>Vibe</span></div>
+  <p>Episode tracker &amp; watchlist for TV shows and movies</p>
+  <div class="footer-links">
+    <a href="#contact">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Use (EULA)</a>
+    <a href="https://github.com/dimonuch1/TV-time" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <br/>
+  <p style="font-size: 0.78rem; opacity: 0.4;">© 2026 TV Vibe. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

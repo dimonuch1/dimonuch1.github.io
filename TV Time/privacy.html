@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Vibe — Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #FF7A1A;
+      --accent-dark: #c9590a;
+      --accent-light: #3a2413;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --bg: #0d0f14;
+      --bg2: #111827;
+      --card: #161920;
+      --card-border: rgba(255, 122, 26, 0.18);
+      --radius: 20px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #e8eaf0; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,15,20,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid var(--card-border); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-logo img { width: 28px; height: 28px; border-radius: 8px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { padding: 100px 5% 40px; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(255,122,26,0.12); color: var(--accent); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 16px; border: 1px solid rgba(255,122,26,0.25); }
+    .hero h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #fff; margin-bottom: 8px; }
+    .hero p { color: rgba(255,255,255,0.45); font-size: 0.9rem; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 5% 80px; }
+    .card { background: var(--card); border-radius: var(--radius); padding: 48px; border: 1.5px solid var(--card-border); }
+    @media (max-width: 600px) { .card { padding: 24px 20px; } }
+    .highlight { background: rgba(255,122,26,0.08); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 32px; }
+    .highlight p { color: var(--accent); font-weight: 500; font-size: 0.95rem; }
+    h2 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; margin: 32px 0 12px; }
+    h2:first-child { margin-top: 0; }
+    h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--accent); margin: 20px 0 8px; }
+    h4 { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem; color: #e8eaf0; margin: 16px 0 6px; }
+    p { color: rgba(255,255,255,0.55); font-size: 0.93rem; line-height: 1.75; margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { color: rgba(255,255,255,0.55); font-size: 0.93rem; line-height: 1.75; margin-bottom: 4px; }
+    a { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+    th, td { text-align: left; padding: 8px 10px; font-size: 0.88rem; color: rgba(255,255,255,0.6); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    th { color: #fff; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem; }
+    .updated { color: rgba(255,255,255,0.35); font-size: 0.85rem; margin-bottom: 24px; }
+    footer { background: #08090d; color: rgba(255,255,255,0.4); padding: 40px 5%; text-align: center; border-top: 1px solid var(--card-border); }
+    .footer-logo { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.3rem; color: white; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .footer-logo img { width: 24px; height: 24px; border-radius: 6px; }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.85rem; margin-bottom: 16px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="../assets/icons/tv_vibe.jpg" alt="TV Vibe icon" />TV <span>Vibe</span></a>
+    <div class="nav-links">
+      <a href="index.html">Support</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Terms of Use</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">🔒 Legal</div>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: July 05, 2026</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <div class="highlight">
+        <p>TV Vibe is committed to protecting your privacy. We do not sell your personal data to third parties.</p>
+      </div>
+
+      <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+      <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+      <h2>Interpretation and Definitions</h2>
+      <h3>Interpretation</h3>
+      <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+
+      <h3>Definitions</h3>
+      <p>For the purposes of this Privacy Policy:</p>
+      <ul>
+        <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
+        <li><strong>Application</strong> refers to TV Vibe, the software program provided by the Company.</li>
+        <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to TV Vibe.</li>
+        <li><strong>Country</strong> refers to: Ukraine</li>
+        <li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</li>
+        <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
+        <li><strong>Service</strong> refers to the Application.</li>
+        <li><strong>Third-Party Sign-In Service</strong> refers to Apple or Google, which You may use to create and sign in to Your Account.</li>
+        <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.</li>
+        <li><strong>You</strong> means the individual accessing or using the Service.</li>
+      </ul>
+
+      <h2>Collecting and Using Your Personal Data</h2>
+      <h3>Types of Data Collected</h3>
+      <h4>Personal Data</h4>
+      <p>While using Our Service, and in order to create and manage Your Account, We may ask You to provide Us with certain personally identifiable information. Personally identifiable information may include, but is not limited to:</p>
+      <ul>
+        <li>Email address</li>
+        <li>First and last name</li>
+        <li>Profile picture (if provided by a Third-Party Sign-In Service)</li>
+        <li>Usage Data</li>
+      </ul>
+
+      <h4>Account Creation and Sign-In</h4>
+      <p>TV Vibe uses Firebase Authentication to create and manage Your Account. You can sign in using Sign in with Apple, Google Sign-In, or by registering with an email address and password. When You sign in with Apple or Google, We receive basic profile information such as Your name and email address from that provider, in accordance with its own privacy policy and the permissions You grant at sign-in. If You choose to hide Your email address through Sign in with Apple, We only receive the private relay address Apple provides.</p>
+
+      <h4>Content You Track</h4>
+      <p>To provide the Service's core features, We store the movies, TV shows, seasons, and episodes You mark as watched, in your watchlist, or otherwise interact with, along with related watch statistics (such as number of movies, episodes, and total time watched). This information is linked to Your Account and stored using Google Firebase (Cloud Firestore) so that Your watchlist and progress stay backed up and synced across Your devices.</p>
+
+      <h4>Usage Data</h4>
+      <p>Usage Data is collected automatically when using the Service. Usage Data may include information such as Your Device's Internet Protocol address, browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, and unique device identifiers.</p>
+      <p>When You access the Service through a mobile device, We may collect certain information automatically, including the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, and other diagnostic data.</p>
+
+      <h2>Third-Party Services</h2>
+      <p>The Service relies on the following third-party services to operate:</p>
+      <table>
+        <tr><th>Service</th><th>Purpose</th></tr>
+        <tr><td>The Movie Database (TMDB)</td><td>Provides movie and TV show titles, artwork, cast, ratings, and streaming availability information. TMDB does not receive any of Your personal data from Us.</td></tr>
+        <tr><td>Google Firebase (Authentication &amp; Firestore)</td><td>Manages Account sign-in and securely stores Your Account data, watchlist, and watch progress.</td></tr>
+        <tr><td>Sign in with Apple</td><td>Optional sign-in method that authenticates Your Account via Your Apple ID.</td></tr>
+        <tr><td>Google Sign-In</td><td>Optional sign-in method that authenticates Your Account via Your Google Account.</td></tr>
+      </table>
+      <p>This Application uses TMDB data but is not endorsed or certified by TMDB.</p>
+
+      <h2>Use of Your Personal Data</h2>
+      <p>The Company may use Personal Data for the following purposes:</p>
+      <ul>
+        <li>To provide and maintain our Service, including to monitor the usage of our Service.</li>
+        <li>To manage Your Account and Your registration as a user of the Service.</li>
+        <li>To provide and sync core features such as Your watchlist, watch history, and watch statistics.</li>
+        <li>To contact You regarding updates or informative communications related to the Service.</li>
+        <li>To manage Your requests and support inquiries.</li>
+        <li>To improve our Service and user experience.</li>
+      </ul>
+
+      <h2>Retention of Your Personal Data</h2>
+      <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our legal agreements and policies. If You delete Your Account, Your Personal Data and associated watchlist data will be deleted from our systems, except where retention is required by law.</p>
+
+      <h2>Security of Your Personal Data</h2>
+      <p>The security of Your Personal Data is important to Us. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security. No method of transmission over the Internet or method of electronic storage is 100% secure.</p>
+
+      <h2>Children's Privacy</h2>
+      <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us.</p>
+
+      <h2>Links to Other Websites</h2>
+      <p>Our Service may contain links to other websites that are not operated by Us, including streaming provider links surfaced from TMDB. We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+
+      <h2>Changes to this Privacy Policy</h2>
+      <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+      <h2>Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, You can contact us at: <a href="mailto:aicaloriescounter@gmail.com">aicaloriescounter@gmail.com</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="../assets/icons/tv_vibe.jpg" alt="TV Vibe icon" />TV <span>Vibe</span></div>
+    <p>Episode tracker &amp; watchlist for TV shows and movies</p>
+    <div class="footer-links">
+      <a href="index.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Terms of Use (EULA)</a>
+      <a href="mailto:aicaloriescounter@gmail.com">Contact</a>
+    </div>
+    <br/>
+    <p style="font-size: 0.78rem; opacity: 0.4;">© 2026 TV Vibe. All rights reserved.</p>
+  </footer>
+</body>
+</html>
