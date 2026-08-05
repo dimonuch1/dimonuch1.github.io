@@ -189,10 +189,15 @@
     .os-icon-img { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
     .os-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; color: #fff; line-height: 1.3; }
     .os-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 22px; max-width: 760px; }
-    .os-shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
-    .os-shot { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--border); background: var(--bg2); transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .os-shots { display: flex; gap: 14px; margin-bottom: 22px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 6px; scrollbar-width: thin; }
+    .os-shots::-webkit-scrollbar { height: 6px; }
+    .os-shots::-webkit-scrollbar-thumb { background: rgba(108,142,255,0.3); border-radius: 100px; }
+    .os-shot { width: 190px; height: auto; flex: 0 0 auto; display: block; border-radius: 14px; border: 1px solid var(--border); background: var(--bg2); scroll-snap-align: start; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
     .os-shot:hover { transform: translateY(-4px); border-color: rgba(108,142,255,0.45); box-shadow: 0 10px 30px rgba(108,142,255,0.15); }
-    .os-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .os-actions { display: flex; gap: 10px 14px; flex-wrap: wrap; align-items: center; }
+    .os-note { font-size: 0.8rem; line-height: 1.5; color: var(--muted); max-width: 420px; }
+    .os-note a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(108,142,255,0.35); transition: opacity 0.2s; }
+    .os-note a:hover { opacity: 0.8; }
     .os-btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem; padding: 8px 16px; border-radius: 100px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; background: rgba(108,142,255,0.12); color: var(--accent2); border: 1px solid rgba(108,142,255,0.2); }
     .os-btn:hover { opacity: 0.85; transform: translateY(-1px); }
     .os-btn svg { width: 16px; height: 16px; fill: currentColor; }
@@ -486,21 +491,29 @@
   </div>
   <div class="os-card fade-in">
     <div class="os-head">
-      <img class="os-icon-img" src="assets/icons/tv_vibe.jpg" alt="TV Vibe" />
-      <div class="os-name">TV Vibe</div>
+      <img class="os-icon-img" src="assets/icons/tv_time.jpg" alt="TV Time" />
+      <div class="os-name">TV Time</div>
     </div>
     <div class="os-desc" data-i18n="os-tvtime">A companion app for tracking TV series and movies — search titles, follow what you watch, and keep tabs on your progress across shows and episodes. Built with Clean Architecture and MVVM+C on UIKit and Combine, and developed with AI-assisted skills for a well-structured, easily extensible codebase that stays fully maintainable with or without AI.</div>
     <div class="os-shots">
-      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/discover.PNG" alt="TV Vibe — Discover" />
-      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series.PNG" alt="TV Vibe — My Series" />
-      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/series_details.PNG" alt="TV Vibe — Show details" />
-      <img class="os-shot" src="https://raw.githubusercontent.com/dimonuch1/TV-time/main/TVTime/docs/seasons.PNG" alt="TV Vibe — Episode progress" />
+      <img class="os-shot" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/42/f7/f2/42f7f2ba-7e24-b3d5-23f5-f8331aa07dbe/TV_Time_iOS.png/600x0w.png" alt="TV Time — Track your shows and movies" loading="lazy" />
+      <img class="os-shot" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3f/f4/15/3ff41528-6712-9067-2f3b-099fe86a2b36/2.png/600x0w.png" alt="TV Time — Follow your favorite shows" loading="lazy" />
+      <img class="os-shot" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bd/b7/7f/bdb77f3a-0739-582d-94f8-8868d0762b1a/3.png/600x0w.png" alt="TV Time — Track every watched episode" loading="lazy" />
+      <img class="os-shot" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f9/08/f1/f908f12c-7f38-7204-5d00-7113401810ec/4.png/600x0w.png" alt="TV Time — Explore full series details" loading="lazy" />
+      <img class="os-shot" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ea/21/69/ea2169e3-ca96-779a-9706-a8f5f78dd2c5/5.png/600x0w.png" alt="TV Time — Explore full movie details" loading="lazy" />
+      <img class="os-shot" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/f3/22/2c/f3222c45-6882-cbd4-b92c-e5443d4babe0/6.png/600x0w.png" alt="TV Time — Search and filter with ease" loading="lazy" />
+      <img class="os-shot" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/99/0f/bd/990fbd7d-84f9-e8a6-975d-c950d874b63f/7.png/600x0w.png" alt="TV Time — Browse movie collections" loading="lazy" />
+      <img class="os-shot" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/4b/c0/ea/4bc0ea4f-3fb2-7126-1391-a18c2b81d634/8.png/600x0w.png" alt="TV Time — Harry Potter Collection" loading="lazy" />
     </div>
     <div class="os-actions">
+      <a href="https://apps.apple.com/ng/app/tv-time-track-shows-movie/id6785762364" class="os-btn" target="_blank" rel="noopener">
+        <span>🍎 App Store</span>
+      </a>
       <a href="https://github.com/dimonuch1/TV-time" class="os-btn" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <span data-i18n="os-github">View on GitHub</span>
       </a>
+      <span class="os-note"><span data-i18n="os-repo-note">The repository may be private. Want to see the code and how the app is organized? </span><a href="mailto:dimonuch1@gmail.com" data-i18n="os-repo-contact">Get in touch.</a></span>
     </div>
   </div>
 </div>
@@ -530,7 +543,7 @@ const i18n = {
     'sec-skills-num':'01 — Skills','sec-skills-title':'Technical expertise',
     'sec-exp-num':'02 — Experience','sec-exp-title':'Work history',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Published apps',
-    'sec-os-num':'04 — Open Source','sec-os-title':'Open source projects','os-tvtime':'A companion app for tracking TV series and movies — search titles, follow what you watch, and keep tabs on your progress across shows and episodes. Built with Clean Architecture and MVVM+C on UIKit and Combine, and developed with AI-assisted skills for a well-structured, easily extensible codebase that stays fully maintainable with or without AI.','os-github':'View on GitHub',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Open source projects','os-tvtime':'A companion app for tracking TV series and movies — search titles, follow what you watch, and keep tabs on your progress across shows and episodes. Built with Clean Architecture and MVVM+C on UIKit and Combine, and developed with AI-assisted skills for a well-structured, easily extensible codebase that stays fully maintainable with or without AI.','os-github':'View on GitHub','os-repo-note':'The repository may be private. Want to see the code and how the app is organized? ','os-repo-contact':'Get in touch.',
     'badge-current':'Current','present':'Present','role-0':'iOS Engineer','role-1':'iOS Engineer','role-2':'Junior iOS Developer','role-3':'Intern iOS Developer',
     'i1':'Maintain and support the iOS app for one of Ukraine\'s largest media providers',
     'i2':'Build features with MVVM, Combine and RxSwift for reactive data flow, and UIKit for the interface',
@@ -576,7 +589,7 @@ const i18n = {
     'sec-skills-num':'01 — Habilidades','sec-skills-title':'Experiencia técnica',
     'sec-exp-num':'02 — Experiencia','sec-exp-title':'Historial laboral',
     'sec-apps-num':'03 — Portafolio','sec-apps-title':'Apps publicadas',
-    'sec-os-num':'04 — Código abierto','sec-os-title':'Proyectos de código abierto','os-tvtime':'Una app para seguir series y películas: busca títulos, registra lo que ves y controla tu progreso a lo largo de temporadas y episodios. Construida con Clean Architecture y MVVM+C sobre UIKit y Combine, y desarrollada con skills asistidos por IA para una base de código bien estructurada y fácilmente ampliable, que se mantiene plenamente con o sin IA.','os-github':'Ver en GitHub',
+    'sec-os-num':'04 — Código abierto','sec-os-title':'Proyectos de código abierto','os-tvtime':'Una app para seguir series y películas: busca títulos, registra lo que ves y controla tu progreso a lo largo de temporadas y episodios. Construida con Clean Architecture y MVVM+C sobre UIKit y Combine, y desarrollada con skills asistidos por IA para una base de código bien estructurada y fácilmente ampliable, que se mantiene plenamente con o sin IA.','os-github':'Ver en GitHub','os-repo-note':'El repositorio puede estar en privado. ¿Quieres ver el código y cómo está organizada la app? ','os-repo-contact':'Escríbeme.',
     'badge-current':'Actual','present':'Presente','role-0':'Ingeniero iOS','role-1':'Ingeniero iOS','role-2':'Desarrollador iOS Junior','role-3':'Desarrollador iOS Practicante',
     'i1':'Mantengo y doy soporte a la app iOS de uno de los mayores proveedores de medios de Ucrania',
     'i2':'Desarrollo funciones con MVVM, Combine y RxSwift para el flujo de datos reactivo, y UIKit para la interfaz',
@@ -622,7 +635,7 @@ const i18n = {
     'sec-skills-num':'01 — Fähigkeiten','sec-skills-title':'Technische Expertise',
     'sec-exp-num':'02 — Erfahrung','sec-exp-title':'Berufserfahrung',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Veröffentlichte Apps',
-    'sec-os-num':'04 — Open Source','sec-os-title':'Open-Source-Projekte','os-tvtime':'Eine Begleit-App zum Verfolgen von Serien und Filmen — Titel suchen, Gesehenes festhalten und den Fortschritt über Staffeln und Episoden im Blick behalten. Entwickelt mit Clean Architecture und MVVM+C auf UIKit und Combine sowie mit KI-gestützten Skills für eine gut strukturierte, leicht erweiterbare Codebasis, die mit oder ohne KI voll wartbar bleibt.','os-github':'Auf GitHub ansehen',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Open-Source-Projekte','os-tvtime':'Eine Begleit-App zum Verfolgen von Serien und Filmen — Titel suchen, Gesehenes festhalten und den Fortschritt über Staffeln und Episoden im Blick behalten. Entwickelt mit Clean Architecture und MVVM+C auf UIKit und Combine sowie mit KI-gestützten Skills für eine gut strukturierte, leicht erweiterbare Codebasis, die mit oder ohne KI voll wartbar bleibt.','os-github':'Auf GitHub ansehen','os-repo-note':'Das Repository ist möglicherweise privat. Möchten Sie den Code und den Aufbau der App sehen? ','os-repo-contact':'Kontaktieren Sie mich.',
     'badge-current':'Aktuell','present':'Aktuell','role-0':'iOS-Entwickler','role-1':'iOS-Entwickler','role-2':'Junior iOS-Entwickler','role-3':'iOS-Entwickler (Praktikant)',
     'i1':'Wartung und Support der iOS-App für einen der größten Medienanbieter der Ukraine',
     'i2':'Entwicklung von Funktionen mit MVVM, Combine und RxSwift für reaktiven Datenfluss sowie UIKit für die Oberfläche',
@@ -668,7 +681,7 @@ const i18n = {
     'sec-skills-num':'01 — Habilidades','sec-skills-title':'Expertise técnica',
     'sec-exp-num':'02 — Experiência','sec-exp-title':'Histórico profissional',
     'sec-apps-num':'03 — Portfólio','sec-apps-title':'Apps publicados',
-    'sec-os-num':'04 — Código aberto','sec-os-title':'Projetos de código aberto','os-tvtime':'Uma app para acompanhar séries e filmes — pesquise títulos, registe o que vê e acompanhe o seu progresso ao longo de temporadas e episódios. Construída com Clean Architecture e MVVM+C sobre UIKit e Combine, e desenvolvida com skills assistidos por IA para uma base de código bem estruturada e facilmente expansível, que se mantém totalmente com ou sem IA.','os-github':'Ver no GitHub',
+    'sec-os-num':'04 — Código aberto','sec-os-title':'Projetos de código aberto','os-tvtime':'Uma app para acompanhar séries e filmes — pesquise títulos, registe o que vê e acompanhe o seu progresso ao longo de temporadas e episódios. Construída com Clean Architecture e MVVM+C sobre UIKit e Combine, e desenvolvida com skills assistidos por IA para uma base de código bem estruturada e facilmente expansível, que se mantém totalmente com ou sem IA.','os-github':'Ver no GitHub','os-repo-note':'O repositório pode estar privado. Quer ver o código e como a app está organizada? ','os-repo-contact':'Fale comigo.',
     'badge-current':'Atual','present':'Atual','role-0':'Engenheiro iOS','role-1':'Engenheiro iOS','role-2':'Desenvolvedor iOS Júnior','role-3':'Estagiário iOS',
     'i1':'Mantenho e dou suporte ao app iOS de um dos maiores provedores de mídia da Ucrânia',
     'i2':'Desenvolvo recursos com MVVM, Combine e RxSwift para fluxo de dados reativo, e UIKit para a interface',
@@ -714,7 +727,7 @@ const i18n = {
     'sec-skills-num':'01 — Compétences','sec-skills-title':'Expertise technique',
     'sec-exp-num':'02 — Expérience','sec-exp-title':'Parcours professionnel',
     'sec-apps-num':'03 — Portfolio','sec-apps-title':'Apps publiées',
-    'sec-os-num':'04 — Open Source','sec-os-title':'Projets open source','os-tvtime':'Une application pour suivre séries et films — recherchez des titres, notez ce que vous regardez et suivez votre progression au fil des saisons et des épisodes. Conçue avec Clean Architecture et MVVM+C sur UIKit et Combine, et développée avec des skills assistés par IA pour une base de code bien structurée et facilement extensible, qui reste pleinement maintenable, avec ou sans IA.','os-github':'Voir sur GitHub',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Projets open source','os-tvtime':'Une application pour suivre séries et films — recherchez des titres, notez ce que vous regardez et suivez votre progression au fil des saisons et des épisodes. Conçue avec Clean Architecture et MVVM+C sur UIKit et Combine, et développée avec des skills assistés par IA pour une base de code bien structurée et facilement extensible, qui reste pleinement maintenable, avec ou sans IA.','os-github':'Voir sur GitHub','os-repo-note':'Le dépôt peut être privé. Vous souhaitez voir le code et l\'organisation de l\'app ? ','os-repo-contact':'Contactez-moi.',
     'badge-current':'Actuel','present':'Actuel','role-0':'Ingénieur iOS','role-1':'Ingénieur iOS','role-2':'Développeur iOS Junior','role-3':'Développeur iOS Stagiaire',
     'i1':'Maintien et support de l\'app iOS de l\'un des plus grands fournisseurs de médias d\'Ukraine',
     'i2':'Développement de fonctionnalités avec MVVM, Combine et RxSwift pour le flux de données réactif, et UIKit pour l\'interface',
@@ -760,7 +773,7 @@ const i18n = {
     'sec-skills-num':'01 — Навички','sec-skills-title':'Технічна експертиза',
     'sec-exp-num':'02 — Досвід','sec-exp-title':'Досвід роботи',
     'sec-apps-num':'03 — Портфоліо','sec-apps-title':'Опубліковані застосунки',
-    'sec-os-num':'04 — Open Source','sec-os-title':'Проєкти з відкритим кодом','os-tvtime':'Застосунок для відстеження серіалів і фільмів — пошук тайтлів, ведення списку переглянутого та контроль прогресу за сезонами й епізодами. Побудований на Clean Architecture та MVVM+C з UIKit і Combine, розроблений із застосуванням AI-скілів для добре структурованого та легко розширюваного коду, який повністю підтримується — з AI або без нього.','os-github':'Переглянути на GitHub',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Проєкти з відкритим кодом','os-tvtime':'Застосунок для відстеження серіалів і фільмів — пошук тайтлів, ведення списку переглянутого та контроль прогресу за сезонами й епізодами. Побудований на Clean Architecture та MVVM+C з UIKit і Combine, розроблений із застосуванням AI-скілів для добре структурованого та легко розширюваного коду, який повністю підтримується — з AI або без нього.','os-github':'Переглянути на GitHub','os-repo-note':'Репозиторій може бути закритим. Хочете подивитися код і структуру застосунку? ','os-repo-contact':'Напишіть мені.',
     'badge-current':'Зараз','present':'Зараз','role-0':'iOS Інженер','role-1':'iOS Інженер','role-2':'Junior iOS Розробник','role-3':'iOS Розробник (стажер)',
     'i1':'Підтримую та супроводжую iOS-додаток для одного з найбільших медіапровайдерів України',
     'i2':'Розробляю функціонал з використанням MVVM, Combine та RxSwift для реактивних потоків даних і UIKit для інтерфейсу',
@@ -806,7 +819,7 @@ const i18n = {
     'sec-skills-num':'01 — Навыки','sec-skills-title':'Техническая экспертиза',
     'sec-exp-num':'02 — Опыт','sec-exp-title':'Опыт работы',
     'sec-apps-num':'03 — Портфолио','sec-apps-title':'Опубликованные приложения',
-    'sec-os-num':'04 — Open Source','sec-os-title':'Проекты с открытым кодом','os-tvtime':'Приложение для отслеживания сериалов и фильмов — поиск тайтлов, ведение списка просмотренного и контроль прогресса по сезонам и эпизодам. Построено на Clean Architecture и MVVM+C с UIKit и Combine, разработано с применением AI-скилов для хорошо структурированного и легко расширяемого кода, который полностью поддерживается — с AI или без него.','os-github':'Открыть на GitHub',
+    'sec-os-num':'04 — Open Source','sec-os-title':'Проекты с открытым кодом','os-tvtime':'Приложение для отслеживания сериалов и фильмов — поиск тайтлов, ведение списка просмотренного и контроль прогресса по сезонам и эпизодам. Построено на Clean Architecture и MVVM+C с UIKit и Combine, разработано с применением AI-скилов для хорошо структурированного и легко расширяемого кода, который полностью поддерживается — с AI или без него.','os-github':'Открыть на GitHub','os-repo-note':'Репозиторий может быть закрытым. Хотите посмотреть код и структуру приложения? ','os-repo-contact':'Напишите мне.',
     'badge-current':'Сейчас','present':'Сейчас','role-0':'iOS Инженер','role-1':'iOS Инженер','role-2':'Junior iOS Разработчик','role-3':'iOS Разработчик (стажёр)',
     'i1':'Поддерживаю и сопровождаю iOS-приложение для одного из крупнейших медиапровайдеров Украины',
     'i2':'Разрабатываю функционал с использованием MVVM, Combine и RxSwift для реактивных потоков данных и UIKit для интерфейса',
